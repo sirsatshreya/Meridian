@@ -1,0 +1,2186 @@
+# MERIDIAN — PHASE 2 MASTER DEVELOPMENT PROMPT
+
+## Backend Architecture, Identity-Based Authentication, Company Onboarding, Legal Agreement Integration, KYB, AI Compliance Screening, Secure Buyer–Seller Connection and Internal Administration
+
+# 1. ROLE AND OBJECTIVE
+
+Act as a senior SaaS architect, backend engineer, database architect, cybersecurity engineer, AI integration engineer and premium UI/UX designer.
+
+Develop Phase 2 of Meridian Trade Systems, an AI-powered Global B2B Trade Orchestration SaaS platform.
+
+Phase 1 already establishes:
+- Meridian branding and identity.
+- Public landing page.
+- Product information.
+- Buyer/Seller role selection interface.
+- Initial authentication interface.
+- Dark premium design system inspired by the supplied NEXUS template.
+
+Extend the EXISTING Phase 1 codebase.
+
+Do not rebuild Phase 1, replace its branding or introduce an unrelated design system.
+
+Phase 2 must establish the real backend and persistent data foundation of Meridian.
+
+The application must implement actual authentication, company registration, legal document presentation and acceptance records, business verification workflows, compliance screening, Buyer–Seller invitations, notifications and internal administration.
+
+Do not create frontend-only demonstrations pretending to be secure or operational backend functionality.
+
+---
+
+# 2. UNDERSTAND THE MERIDIAN BUSINESS MODEL
+
+Meridian is a cloud-based, AI-powered B2B Trade Orchestration SaaS platform.
+
+Businesses already know their buyers or sellers when they join Meridian.
+
+They come to Meridian to manage and coordinate their existing international trade transactions.
+
+Meridian is NOT:
+- A supplier-discovery platform.
+- A customer-discovery platform.
+- A lead-generation platform.
+- An automatic buyer-seller matching marketplace.
+
+Its purpose is to coordinate trade activities through one centralized SaaS environment.
+
+The future platform will include:
+- Business verification.
+- Platform subscriptions.
+- Platform agreements.
+- Buyer–Seller trade agreements.
+- Payment coordination.
+- Shipment monitoring.
+- AI-based risk detection.
+- Dispute support.
+- Settlement reporting.
+
+Phase 2 must establish the companies, secure accounts, agreement records and Buyer–Seller connection process required by these later modules.
+
+---
+
+# 3. DESIGN AND UI/UX REQUIREMENTS
+
+### 3.1 Preserve the Phase 1 Design
+
+Continue the visual style of the supplied reference:
+
+https://21st.dev/@rockgaming755/templates/b2b-for-your-next-business
+
+Keep the same Meridian visual identity:
+
+- Almost-black background: #08090A.
+- Deep charcoal: #111315.
+- Graphite cards: #171A1C.
+- Soft white: #F5F5F2.
+- Muted grey: #999D9B.
+- Neon lime: #D7FF43.
+- Subtle borders and modern sans-serif typography.
+
+Maintain:
+- Oversized modern headings.
+- Minimalistic navigation.
+- Premium dark interface.
+- Smooth transitions.
+- Subtle animations.
+- Neon-lime accents.
+- Generous spacing.
+- Consistent typography.
+
+DO NOT CHANGE THE EXISTING BRAND DESIGN.
+
+### 3.2 Improve Dashboard Interactivity
+
+The authenticated areas should be more interactive while retaining the same design identity.
+
+Implement:
+- Interactive sidebar navigation.
+- Clickable dashboard cards.
+- Searchable and filterable tables.
+- Expandable company profiles.
+- Interactive verification-status panels.
+- Document preview and download.
+- Activity timelines.
+- Notifications drawer.
+- Interactive onboarding progress.
+- Confirmation dialogs.
+- Loading indicators.
+- Empty states.
+- Clear success and error messages.
+- Responsive layouts.
+
+The public website, Buyer workspace, Seller workspace and internal Admin dashboard must look like parts of one unified SaaS product.
+
+---
+
+# 4. PHASE 2 MASTER USER FLOW
+
+The complete flow must be:
+
+1. Visitor selects Buyer or Seller.
+2. User signs in or creates an account.
+3. Business email is verified.
+4. Company registration and business onboarding.
+5. Authorized representative verification.
+6. Relevant Meridian platform documents are displayed.
+7. Agreement 1 is reviewed and electronically accepted through the configured demonstration or approved signing process.
+8. Privacy Notice is acknowledged separately.
+9. Business verification and compliance screening.
+10. Account activation or manual review.
+11. Buyer creates a proposed Trade Request.
+12. Buyer enters the existing Seller's details.
+13. Meridian sends a secure invitation to the Seller.
+14. Seller independently registers or signs in.
+15. Seller completes onboarding and Agreement 1 acceptance.
+16. Seller reviews the proposed Trade Request.
+17. Seller accepts, declines or requests changes.
+18. Buyer and Seller are connected for the proposed trade.
+19. Both receive appropriate email notifications.
+20. All company, account and workflow events are recorded in persistent history.
+
+Buyers and Sellers do not need to be logged in simultaneously.
+
+---
+
+# 5. IDENTITY SELECTION AND AUTHENTICATION
+
+## 5.1 Identity Selection First
+
+The user must select their identity before entering the login or registration process.
+
+Show exactly two public options:
+
+BUYER
+
+For businesses purchasing products or services from existing international suppliers.
+
+SELLER
+
+For businesses supplying products or services to existing international buyers.
+
+No Admin, Developer or System option may appear publicly.
+
+The selected identity determines the authentication and registration route.
+
+## 5.2 Login
+
+Buyer login:
+- Business Email.
+- Password.
+- Show/Hide Password.
+- Forgot Password.
+- Sign In.
+
+Seller login:
+- Business Email.
+- Password.
+- Show/Hide Password.
+- Forgot Password.
+- Sign In.
+
+The backend must verify that the authenticated account belongs to the selected identity.
+
+A Seller account must not be accessible through the Buyer login path, and vice versa.
+
+## 5.3 Registration
+
+Create separate Buyer and Seller registration flows.
+
+Initial details:
+- Full Name.
+- Official Business Email.
+- Password.
+- Confirm Password.
+- Acceptance of required account terms.
+
+After initial account creation, continue to full company onboarding.
+
+## 5.4 Authentication Security
+
+Implement:
+- Secure authentication backend.
+- Secure password hashing.
+- Email verification.
+- MFA or email OTP support.
+- Secure session handling.
+- Login rate limiting.
+- Failed-login monitoring.
+- Password reset.
+- Session expiry.
+- Logout and session revocation.
+- New-device notification.
+- Server-side role authorization.
+
+Do not store passwords in plaintext, browser storage or public code.
+
+Do not rely only on frontend route protection.
+
+Every protected backend operation must verify the authenticated user, organization and permissions.
+
+---
+
+# 6. COMPANY IDENTITY — ONE COMPANY, ONE PRIMARY ACCOUNT
+
+This is a mandatory Meridian business rule.
+
+A legal business entity must have one unique company account in the Phase 2 MVP.
+
+Each organization receives one persistent Organization ID.
+
+For this phase:
+- One legal company has one primary account owner.
+- One email identity cannot create multiple accounts.
+- A company cannot register again simply by using another email address.
+- One company's account cannot freely switch between Buyer and Seller identity.
+- The selected role is stored and enforced by the backend.
+- Additional employee accounts are disabled in Phase 2.
+
+Do not confuse multiple employees with multiple companies.
+
+Future versions may support multiple authorized employees under one Organization ID, but do not implement that feature now.
+
+### Duplicate checks
+
+Use:
+- Country of incorporation.
+- Company registration number.
+- Legal entity type.
+- Relevant business identifiers.
+
+Normalize identifiers before checking duplicates.
+
+If a possible duplicate is identified:
+- Stop automatic account creation.
+- Show an appropriate message.
+- Allow secure account recovery or manual support.
+- Notify the internal Admin.
+- Record the event.
+
+If a group company has a genuinely separate legal registration, it may be considered a separate entity after review.
+
+Never claim that duplicate registration controls are impossible to bypass; provide layered verification and review.
+
+---
+
+# 7. BUSINESS REGISTRATION AND COMPANY ONBOARDING
+
+Create a multi-step onboarding interface with progress tracking.
+
+Step 1 — Company Information.
+
+Step 2 — Authorized Representative.
+
+Step 3 — Business Documents.
+
+Step 4 — Meridian Platform Agreement.
+
+Step 5 — Business Verification and Compliance.
+
+Step 6 — Account Activation.
+
+## 7.1 Company Details
+
+Collect:
+
+- Legal Company Name.
+- Trading Name.
+- Country of Incorporation.
+- State / Region.
+- Legal Entity Type.
+- Company Registration Number.
+- Tax Identification Number, where applicable.
+- Registered Address.
+- Official Business Email.
+- Official Business Website.
+- Business Phone.
+- Industry.
+- Nature of Business.
+- Main Products / Services.
+- Countries of Operation.
+
+Support country-specific identifiers.
+
+For Indian entities, allow relevant identifiers such as CIN, LLPIN and GSTIN where applicable.
+
+Do not assume every country has the same identifiers.
+
+## 7.2 Authorized Representative
+
+Collect:
+
+- Full Legal Name.
+- Designation.
+- Official Business Email.
+- Contact Number.
+- Role in the organization.
+- Declaration of authority to register and act for the company.
+
+Require affirmative confirmation:
+
+"I confirm that I am authorized to register and represent the company identified in this account."
+
+An official email address alone must not be treated as proof of legal authority.
+
+Use additional verification or supporting authorization evidence where necessary.
+
+## 7.3 Business Documents
+
+Allow secure uploads of applicable:
+
+- Certificate of Incorporation / Business Registration.
+- Tax Registration Certificate.
+- Proof of Registered Business Address.
+- Authorized Representative Evidence.
+- Additional KYB documents.
+
+Implement:
+- Private storage.
+- Encryption where supported.
+- File validation.
+- File-size restrictions.
+- Malware scanning where available.
+- Restricted file access.
+- Secure time-limited download URLs.
+- Document history.
+
+Do not expose one company's documents to another company.
+
+## 7.4 Verification Status
+
+Use:
+
+- NOT_STARTED.
+- EMAIL_VERIFICATION_PENDING.
+- KYB_PENDING.
+- UNDER_REVIEW.
+- NEEDS_MORE_INFORMATION.
+- VERIFIED.
+- REJECTED.
+- SUSPENDED.
+
+Only mark a company VERIFIED after the required verification checks have actually succeeded.
+
+Use an authorized KYB provider or manual verification workflow.
+
+AI-generated summaries must never be represented as official government verification.
+
+---
+
+# 8. INTEGRATE ALL 12 PROVIDED MERIDIAN PDF DOCUMENTS
+
+IMPORTANT:
+
+The following 12 PDF documents are provided in the uploaded ZIP:
+
+`Meridian_Separate_Agreement_PDFs.zip`
+
+Extract and use the actual documents.
+
+Do not invent replacements, rewrite the clauses or silently remove provisions.
+
+Preserve:
+- Document title.
+- Document text.
+- Clause numbering.
+- Version details.
+- Document date.
+- Signature fields.
+- Existing legal disclaimers.
+
+Make the PDFs available through a secure document repository and an accessible document viewer.
+
+All 12 PDFs are drafts for discussion and legal review.
+
+Until Meridian's legal entity, jurisdiction, addresses, contact details, applicable clauses and placeholders have been completed and approved, display a clear warning:
+
+"DRAFT FOR DISCUSSION AND LEGAL REVIEW — NOT APPROVED FOR PRODUCTION EXECUTION."
+
+Do not claim that a draft acceptance is automatically legally enforceable.
+
+Use a demo acceptance record in the hackathon environment until production documents are approved.
+
+## 8.1 Document 01 — Master Platform Terms
+
+Filename:
+
+`01_Meridian_Master_Platform_Terms.pdf`
+
+Role:
+
+Primary Agreement 1 between Meridian and each business using the platform.
+
+This is the main platform contract to be presented to Buyers and Sellers during onboarding.
+
+Display:
+- Full PDF.
+- Download option.
+- Version.
+- Effective date.
+- Document status.
+- Clear explanation of acceptance.
+
+The document covers:
+- Parties and acceptance.
+- Meridian platform services.
+- Meridian's role as software provider and workflow orchestrator.
+- Customer accounts and authority.
+- Buyer–Seller transactions.
+- Third-party services and payments.
+- AI and automated tools.
+- Customer content.
+- Acceptable use and suspension.
+- Confidentiality.
+- Service availability.
+- Fees and taxes.
+- Data protection.
+- Intellectual property.
+- Disclaimers.
+- Liability.
+- Termination.
+- Governing law and disputes.
+- General terms.
+
+Every Buyer and Seller company must independently accept the applicable current version.
+
+Do not allow a Buyer to accept Agreement 1 for a Seller.
+
+## 8.2 Document 02 — Privacy Notice
+
+Filename:
+
+`02_Meridian_Privacy_Notice.pdf`
+
+Role:
+
+Separate privacy information and acknowledgement.
+
+Display it separately from the Master Platform Terms.
+
+Cover:
+- Information collected.
+- Purposes of processing.
+- Legal grounds.
+- Data sharing.
+- International transfers.
+- Data retention.
+- Individual rights.
+- Security incidents.
+- Cookies and analytics.
+- Children.
+- Changes and contact details.
+
+Record:
+- Privacy Notice version.
+- Date displayed.
+- User identity.
+- Organization ID.
+- Separate acknowledgement event.
+
+Do not treat a privacy-notice acknowledgement as universal consent for every processing purpose.
+
+IMPORTANT DOCUMENT LABEL CORRECTION:
+
+This PDF currently labels itself "Agreement 1 — Notice to platform users..." although it is a Privacy Notice.
+
+In the app, classify it as "Privacy Notice — Separate Acknowledgement", not as the primary Agreement 1.
+
+Flag its cover-page label for legal correction before production.
+
+## 8.3 Document 03 — Subscription and Billing Terms
+
+Filename:
+
+`03_Meridian_Subscription_and_Billing_Terms.pdf`
+
+Role:
+
+Future Phase 3 subscription and billing module.
+
+It covers:
+- Order forms.
+- Subscription duration.
+- Renewal.
+- Fees and payments.
+- Taxes.
+- Trial plans.
+- Late payments.
+- Suspension.
+- Cancellation.
+- Refunds.
+- Records and audit.
+- Priority of terms.
+
+For Phase 2:
+- Store the document in the versioned legal document repository.
+- Make it available for reference.
+- Do not create subscription checkout or collect subscription payments yet.
+- Do not make a company accept paid-plan obligations before selecting a plan.
+- Do not activate recurring billing.
+
+When Phase 3 is implemented, link this document to the selected plan, order form and billing consent.
+
+## 8.4 Document 04 — Acceptable Use Policy
+
+Filename:
+
+`04_Meridian_Acceptable_Use_Policy.pdf`
+
+Role:
+
+Platform usage and security rules.
+
+Integrate into onboarding as a policy incorporated into or associated with the Master Platform Terms.
+
+It covers:
+- Permitted use.
+- Prohibited conduct.
+- Unauthorized access.
+- Credential sharing.
+- Fraud.
+- Sanctions evasion.
+- Illegal trade.
+- False company identity.
+- False telemetry and evidence.
+- AI and automation boundaries.
+- Monitoring.
+- Reporting.
+- Enforcement.
+
+Show the complete policy.
+
+Require the intended acknowledgement if this is the finalized onboarding method.
+
+Never use pre-checked acceptance boxes.
+
+## 8.5 Document 05 — Service Level Agreement
+
+Filename:
+
+`05_Meridian_Service_Level_Agreement.pdf`
+
+Role:
+
+Platform service availability, support and commitments.
+
+It covers:
+- Scope.
+- Availability targets.
+- Exclusions.
+- Support priorities.
+- Response targets.
+- Maintenance.
+- Service credits.
+- Customer responsibilities.
+- Third-party dependencies.
+- Claims and review.
+
+Important:
+
+The document currently contains proposed targets and bracketed values.
+
+Do not claim these are actual Meridian guarantees.
+
+Only activate an SLA after the applicable services, plan, exclusions, support arrangements and commitments have been approved and operationally implemented.
+
+For Phase 2, make it available as a draft/reference document and preserve its version.
+
+## 8.6 Document 06 — Data Processing Agreement
+
+Filename:
+
+`06_Meridian_Data_Processing_Agreement.pdf`
+
+Role:
+
+Additional agreement for situations where Meridian processes personal data on behalf of a Customer as a processor/service provider.
+
+It covers:
+- Roles and scope.
+- Customer instructions.
+- Confidentiality.
+- Security measures.
+- Subprocessors.
+- Assistance.
+- Personal data breaches.
+- International transfers.
+- Return and deletion.
+- Audit.
+- Liability.
+- Processing details.
+- Transfers and subprocessors.
+
+Do not force every company to sign this automatically.
+
+First establish the actual data-processing role for the relevant service.
+
+Use a DPA workflow where applicable, including:
+- DPA status.
+- Customer identity.
+- Processing purpose.
+- Data categories.
+- Data-subject categories.
+- Hosting locations.
+- Subprocessors.
+- International transfer mechanism.
+- Required annex information.
+- Acceptance and version record.
+
+If the required annexes or subprocessors are not finalized, mark the DPA as pending legal completion.
+
+## 8.7 Document 07 — Security, Incident Response and Data Retention Schedule
+
+Filename:
+
+`07_Meridian_Security_Incident_and_Retention_Schedule.pdf`
+
+Role:
+
+Operational security and retention framework.
+
+It covers:
+- Security governance.
+- Identity and account controls.
+- Security incidents.
+- Customer cooperation.
+- Retention schedules.
+- Deletion and legal holds.
+- Data minimization.
+- Periodic review.
+
+Use it to build Meridian's operational security and retention architecture.
+
+Important:
+
+The proposed retention periods in this document must not be automatically hardcoded as final production promises.
+
+They must be reviewed for legal requirements, actual storage systems, dispute needs and operational feasibility.
+
+For Phase 2:
+- Implement configurable retention policies.
+- Create a security incident record structure.
+- Create incident and account-compromise workflows.
+- Maintain an access-controlled security log.
+- Provide a security and privacy information page.
+
+Do not promise deletion from backups within a specific period until it is technically supported and legally approved.
+
+## 8.8 Document 08 — Buyer–Seller Master Trade Framework Agreement
+
+Filename:
+
+`08_Meridian_Buyer_Seller_Master_Trade_Framework_Agreement.pdf`
+
+Role:
+
+Agreement 2, directly between Buyer and Seller.
+
+This is NOT Agreement 1.
+
+It governs the commercial relationship between the two participating companies.
+
+It covers:
+- Parties and purpose.
+- Independent commercial relationship.
+- Transaction formation.
+- Goods and specifications.
+- Price and payment.
+- Delivery, risk and title.
+- Inspection and acceptance.
+- Telemetry and evidence.
+- AI and electronic agents.
+- Non-conformance and remedies.
+- Compliance.
+- Confidentiality.
+- Force majeure.
+- Liability.
+- Termination.
+- Disputes.
+- Governing law.
+- Electronic signatures.
+
+For Phase 2:
+
+- Store the PDF as a future-stage legal template.
+- Do not require either party to sign it yet.
+- Do not create its complete negotiation or execution workflow.
+- Do not present the preliminary Seller invitation as acceptance of Agreement 2.
+
+Its execution belongs to the future commercial-contract phase.
+
+## 8.9 Document 09 — Buyer–Seller Transaction Schedule
+
+Filename:
+
+`09_Meridian_Transaction_Schedule_Template.pdf`
+
+Role:
+
+A transaction-specific schedule under Agreement 2.
+
+It contains:
+- Contracting parties.
+- Goods or services.
+- Commercial terms.
+- Delivery and risk.
+- Inspection and acceptance.
+- Service levels.
+- Telemetry.
+- Agent permissions.
+- Non-conformance and disputes.
+- Special conditions and acceptance.
+
+For Phase 2, the Buyer may enter preliminary trade information to create a Trade Request.
+
+Do not present this preliminary request as an executed Transaction Schedule.
+
+Its final completion and acceptance belong to the future Trade Agreement phase.
+
+## 8.10 Document 10 — Electronic Agent and Signature Schedule
+
+Filename:
+
+`10_Meridian_Electronic_Agent_and_Signature_Schedule.pdf`
+
+Role:
+
+Optional Agreement 2 schedule defining the permitted authority of Buyer and Seller electronic agents.
+
+It covers:
+- Authorised systems.
+- Permitted actions.
+- Limits.
+- Human approval.
+- Responsibility.
+- Revocation.
+- Electronic acceptance.
+- Cryptographic integrity.
+- Permission register.
+
+For Phase 2:
+- Store the document for future use.
+- Do not grant AI agents authority to bind either company.
+- Do not use this document as a blanket authorization for autonomous transactions.
+
+Detailed agent permissions will be configured in a later phase.
+
+## 8.11 Document 11 — IoT Telemetry and Digital Evidence Protocol
+
+Filename:
+
+`11_Meridian_IoT_Telemetry_and_Evidence_Protocol.pdf`
+
+Role:
+
+Agreement 2 technical schedule for shipment monitoring and digital evidence.
+
+It covers:
+- Device registration.
+- Data integrity.
+- Device identity.
+- Physical reliability.
+- Evidence metadata.
+- Loss of signal.
+- Anomalies.
+- Photo and document evidence.
+- Storage and access.
+- Evidence review.
+- Audit packages.
+- Party responsibilities.
+
+For Phase 2:
+- Store the document as a future reference.
+- Do not activate shipment monitoring.
+- Do not claim that cryptographic hashes or HMAC alone prove physical truth or legal admissibility.
+
+Implement its actual workflow in the future shipment-monitoring phase.
+
+## 8.12 Document 12 — Buyer–Seller Dispute Resolution Schedule
+
+Filename:
+
+`12_Meridian_Dispute_Resolution_Schedule.pdf`
+
+Role:
+
+Agreement 2 dispute-resolution procedure.
+
+It covers:
+- Operational escalation.
+- Negotiation.
+- Evidence review.
+- Interim measures.
+- Mediation.
+- Arbitration or courts.
+- Urgent relief.
+- Costs.
+- Confidentiality.
+- Meridian's limited role.
+
+For Phase 2:
+- Preserve the document as a future trade-contract schedule.
+- Do not make Meridian the legal adjudicator.
+- Do not make disputes or settlement decisions automatically binding.
+
+Implement its workflow in the future dispute-management phase.
+
+---
+
+# 9. AGREEMENT 1 ACCEPTANCE WORKFLOW
+
+After initial registration and company-information submission, each organization must independently review and accept the current approved Master Platform Terms before full activation.
+
+For returning companies:
+- Check the currently applicable Agreement 1 version.
+- If already accepted, do not force repeated acceptance.
+- If a new applicable version exists, present it and request re-acceptance before access to affected functionality.
+
+### Acceptance Screen
+
+Heading:
+
+"Meridian Platform Agreement"
+
+Display:
+- Master Platform Terms.
+- Document version.
+- Effective date.
+- Draft/Active status.
+- PDF viewer.
+- Download option.
+
+Provide separate links to:
+- Privacy Notice.
+- Acceptable Use Policy.
+- Applicable DPA, where required.
+- Applicable SLA, where approved.
+
+Require affirmative controls.
+
+Representative declaration:
+
+"I confirm that I am authorized to accept the Meridian Platform Terms on behalf of this company."
+
+Button:
+
+"Accept and Sign Agreement"
+
+### Acceptance Records
+
+Record, where technically available and lawfully collected:
+
+- Organization ID.
+- User ID.
+- Legal company name.
+- Authorized representative.
+- Designation.
+- Official email.
+- Agreement version.
+- Exact document hash (SHA-256).
+- Acceptance ID.
+- Server-generated UTC timestamp.
+- Display timezone.
+- Authentication method.
+- Affirmative consent event.
+- Relevant session/device evidence.
+
+Preserve the exact document presented and accepted.
+
+Generate a downloadable acceptance receipt.
+
+Send a confirmation email.
+
+Do not overwrite old versions or acceptance records.
+
+### Signature Accuracy
+
+A checkbox or typed name must not be falsely labelled a certificate-based cryptographic digital signature.
+
+If the PDF remains marked as a draft for legal review, Phase 2 must operate in a clearly labelled DEMO acceptance mode.
+
+Only promote a legally reviewed and approved document version to production execution status.
+
+---
+
+# 10. AI BUSINESS AND TRADE COMPLIANCE SCREENING
+
+Build a source-based Compliance Screening Agent.
+
+The purpose is to identify potential risks, not to make unsupported accusations that a business is illegal.
+
+Separate company screening from trade screening.
+
+## 10.1 Company Screening
+
+At onboarding, screen relevant information:
+
+- Legal business name.
+- Trading names and aliases.
+- Country of incorporation.
+- Company registration number.
+- Business activities.
+- Relevant ownership or representative information, where lawful and necessary.
+
+Check configured authoritative public sources for:
+- Sanctions-related matches.
+- Restricted-party matches.
+- Official regulatory notices.
+- Public business registration information.
+- Credible adverse-media findings requiring review.
+
+Keep official sanctions-list matches separate from ordinary news reports.
+
+## 10.2 Trade Screening
+
+After the Buyer enters preliminary Trade Request details, assess the proposed goods and route.
+
+Collect:
+- Product description.
+- Product category.
+- HS code, if known.
+- Quantity and unit.
+- Country of origin.
+- Destination country.
+- Transit countries or route, where known.
+- Proposed end use.
+- End user, where relevant.
+- Licences and permits, where applicable.
+
+Suggested official source registry:
+
+- UN Security Council Consolidated Sanctions List.
+- US OFAC Sanctions List Service.
+- UK Sanctions List.
+- EU consolidated financial sanctions information.
+- US BIS Consolidated Screening List.
+- Indian DGFT import/export policy.
+- Indian DGFT SCOMET controls.
+- Other relevant official national trade-control sources.
+
+Use jurisdiction-appropriate sources.
+
+Record source name, URL, authority, date checked, update date where available, matched entry and evidence reference.
+
+Do not rely only on general web search results.
+
+Do not treat an AI-suggested HS code as an official customs classification.
+
+## 10.3 Screening Results
+
+Use:
+
+- CLEAR_ON_CHECKED_SOURCES.
+- POTENTIAL_MATCH_REVIEW_REQUIRED.
+- RESTRICTED_LICENCE_REVIEW.
+- PROHIBITED_OR_SANCTIONS_ALERT.
+- INCONCLUSIVE.
+- SOURCE_UNAVAILABLE.
+
+An unavailable or inconclusive source must never result in an automatic clear status.
+
+## 10.4 AI Review Rules
+
+AI may:
+- Summarize findings.
+- Compare relevant company identifiers.
+- Explain possible matches.
+- Identify missing information.
+- Suggest whether manual review is required.
+
+AI must not:
+- Declare a company illegal from a name-only match.
+- Automatically approve a high-risk case.
+- Treat the absence of search results as proof of compliance.
+- Make an irreversible legal decision.
+
+Potential matches and high-risk issues must go into the internal Admin Review Queue.
+
+Admin decisions must include evidence references, reason, reviewer identity and timestamp.
+
+Clearly label simulated hackathon screening results as DEMO / SIMULATED.
+
+---
+
+# 11. BUYER DASHBOARD
+
+After successful onboarding, Agreement 1 acceptance and required account checks, redirect the Buyer to its private workspace.
+
+Sidebar:
+
+- Overview.
+- Company Profile.
+- Business Verification.
+- Agreement 1.
+- Trade Requests.
+- Seller Invitations.
+- Trade History.
+- Compliance Status.
+- Activity History.
+- Notifications.
+- Account Security.
+- Settings.
+
+### Overview Cards
+
+- Company Verification.
+- Agreement 1 Status.
+- Active Trade Requests.
+- Pending Invitations.
+- Connected Sellers.
+- Recent Activity.
+
+Each card must be interactive.
+
+### Create Trade Request
+
+Allow the Buyer to enter:
+
+Seller Information:
+- Seller Legal Name.
+- Seller Country.
+- Seller Official Business Email.
+- Company Registration Number, if available.
+
+The Buyer may:
+- Enter the existing Seller's details.
+- Select an existing verified Seller by exact company identity.
+
+Do not introduce automatic supplier matching or discovery.
+
+Product / Trade Details:
+- Product description.
+- Product category.
+- HS code, if known.
+- Quantity.
+- Unit.
+- Proposed price.
+- Currency.
+- Country of origin.
+- Destination.
+- Delivery location.
+- Proposed delivery date.
+- Product specifications.
+- Quality requirements.
+- Packaging requirements.
+- Inspection conditions.
+- SLA requirements.
+- Temperature / humidity requirements, where relevant.
+
+Allow draft saving.
+
+Run applicable screening before invitation.
+
+### Trade Request Status
+
+- DRAFT.
+- SCREENING_PENDING.
+- NEEDS_MORE_INFORMATION.
+- AWAITING_ADMIN_REVIEW.
+- READY_TO_INVITE.
+- INVITATION_SENT.
+- AWAITING_SELLER_RESPONSE.
+- SELLER_ACCEPTED_INVITATION.
+- CHANGES_REQUESTED.
+- INVITATION_DECLINED.
+- INVITATION_EXPIRED.
+- ON_HOLD.
+
+Record every status transition.
+
+---
+
+# 12. SELLER INVITATION AND INDEPENDENT ONBOARDING
+
+Once a Buyer submits a suitable Trade Request, allow it to invite the existing Seller.
+
+### 12.1 Secure Invitation
+
+Send an email to the Seller's supplied business email.
+
+Subject:
+
+"Invitation to Join Meridian — Trade Request Awaiting Review"
+
+Include:
+- Buyer company.
+- Trade reference.
+- Brief trade description.
+- Secure invitation link.
+- Expiry information.
+- Registration / sign-in instructions.
+
+Invitation token requirements:
+- Unique.
+- Single-use.
+- Time-limited.
+- Stored hashed.
+- Bound to the intended recipient email and company identity.
+- Revocable.
+- Protected against replay.
+
+### 12.2 Seller Existing Account
+
+If the Seller already has a Meridian account:
+- Open Seller sign-in.
+- Authenticate independently.
+- Validate the invitation recipient.
+- Display the invitation in the Seller dashboard.
+
+### 12.3 Seller New Account
+
+If the Seller is new:
+- Start Seller registration.
+- Verify its business email.
+- Complete company onboarding.
+- Submit its own business information.
+- Verify its authorized representative.
+- Review and accept Agreement 1 independently.
+- Complete applicable business and trade screening.
+
+The Buyer cannot accept the Seller's platform terms or act as its account owner.
+
+### 12.4 Seller Review
+
+Show:
+- Buyer information permitted for disclosure.
+- Product details.
+- Quantity.
+- Proposed price and currency.
+- Destination.
+- Delivery conditions.
+- Quality specifications.
+- SLA conditions.
+- Relevant shared documents.
+
+Provide:
+
+1. Accept Invitation.
+2. Request Changes / Clarification.
+3. Decline Invitation.
+
+Accepting the invitation does not execute Agreement 2.
+
+After acceptance:
+- Link Buyer and Seller Organization IDs.
+- Update the request status.
+- Notify both companies.
+- Record the full event history.
+
+---
+
+# 13. THIRD-PARTY UNAUTHORIZED ACCESS PROTECTION
+
+This is a high-priority security requirement.
+
+Protect against:
+- Impersonation.
+- Duplicate company registration.
+- Stolen credentials.
+- Shared passwords.
+- Forwarded invitation links.
+- Unauthorized signatory actions.
+- Former employee access.
+- Account takeover.
+- Unauthorized company profile changes.
+- Manipulation of trade records.
+
+Implement:
+
+### Account Protection
+- Unique email per primary user.
+- MFA / OTP.
+- Secure password reset.
+- Session controls.
+- Failed-login rate limits.
+- New-device notifications.
+- Session revocation.
+- Suspicious login alerts.
+
+### Company Protection
+- Unique Organization ID.
+- Duplicate organization checks.
+- Authorized representative declaration.
+- Reverification for sensitive profile changes.
+- Manual review when ownership or authority is unclear.
+
+### Invitation Protection
+- Single-use invitation.
+- Expiration.
+- Recipient email verification.
+- Organization binding.
+- Revocation.
+- Redemption history.
+
+### Trade Protection
+- Role-based access.
+- Version-controlled requests.
+- Recorded approvals.
+- No unilateral changes to another company's data.
+- Alerts on sensitive changes.
+
+### Emergency Controls
+- Temporarily restrict compromised accounts.
+- Revoke sessions.
+- Reset credentials.
+- Preserve audit records.
+- Notify the authorized business contact.
+- Provide admin investigation workflow.
+
+Do not let the Admin impersonate a user or accept an agreement on the user's behalf.
+
+Admin read-only previews must remain separate from real company actions.
+
+---
+
+# 14. EMAIL NOTIFICATION SYSTEM
+
+Use a real backend email provider when configured.
+
+Create a provider adapter instead of hardcoding an email service into every module.
+
+Send the following:
+
+### Account Registration
+
+Subject: Welcome to Meridian
+
+### Email Verification
+
+Subject: Verify Your Meridian Business Email
+
+### Agreement Acceptance
+
+Subject: Meridian Platform Terms Accepted — Confirmation
+
+Include:
+- Company name.
+- Representative.
+- Agreement version.
+- Acceptance date and time.
+- Acceptance reference.
+- Secure PDF / receipt link.
+
+### Successful Login
+
+Subject: Successful Sign-In to Your Meridian Account
+
+Include:
+- Registered business email.
+- Role.
+- Date and time.
+- New-device or session information, where appropriate.
+
+Do not include passwords, OTPs, session tokens or secret credentials.
+
+### Verification Result
+
+Subject: Meridian Business Verification Status Update
+
+### Seller Invitation
+
+Subject: Invitation to Join Meridian — Trade Request Awaiting Review
+
+### Seller Response
+
+Notify the Buyer when the Seller accepts, declines or requests changes.
+
+Record:
+- Email event ID.
+- Recipient.
+- Template.
+- Queue status.
+- Provider response.
+- Delivery status when supported.
+- Failure and retry information.
+
+Never report DELIVERED unless delivery is actually confirmed by the email provider.
+
+For hackathon demo emails:
+- Use a local email capture tool or provider sandbox.
+- Label the delivery as DEMO / SIMULATED.
+- The seeded `.test` email addresses must not be presented as real deliverable addresses.
+
+---
+
+# 15. INTERNAL ADMIN / DEVELOPER DASHBOARD
+
+Only authorized Meridian system makers can access the complete platform directory and internal workflow information.
+
+Public users must never see Admin or Developer as a registration choice.
+
+Use a protected internal route:
+
+`/internal/admin`
+
+Require server-side admin authorization and MFA.
+
+### Admin Overview
+
+Display:
+- Total registered companies.
+- Total Buyers.
+- Total Sellers.
+- Pending KYB.
+- Verified companies.
+- Rejected / suspended companies.
+- Agreement 1 pending.
+- Agreement 1 accepted.
+- Pending Seller invitations.
+- Connected Buyer–Seller relationships.
+- Trade requests in progress.
+- Compliance alerts.
+- Suspicious login activity.
+- Email delivery failures.
+
+### Company Directory
+
+Create a searchable company table:
+
+- Legal Company Name.
+- Organization ID.
+- Buyer / Seller.
+- Country.
+- Registration Number.
+- Official Email.
+- Registration Date.
+- Email Verification.
+- Agreement 1 Status.
+- KYB Status.
+- Compliance Status.
+- Account Status.
+- Last Login.
+- Current Workflow Status.
+
+### Company Detail View
+
+Allow authorized Admins to inspect:
+- Company details.
+- Authorized representative details.
+- Submitted documents.
+- Verification history.
+- Agreement versions and acceptance records.
+- Privacy Notice acknowledgements.
+- Compliance screening.
+- Trade requests.
+- Invitations.
+- Notifications.
+- Security alerts.
+- Account history.
+- Audit events.
+
+Do not expose raw passwords, authentication secrets, OTPs or reusable tokens.
+
+Log every access to sensitive company information and documents.
+
+### Compliance Review Centre
+
+Admin can:
+- Inspect possible matches.
+- Review official source references.
+- Request additional details.
+- Mark a match as false positive with reasons.
+- Place a workflow on hold.
+- Approve after appropriate review.
+- Reject or suspend where justified.
+
+Record the reviewer, timestamp and reason.
+
+### Workflow Monitoring
+
+Display each company’s process:
+
+Registration
+→ Email Verification
+→ Agreement 1
+→ KYB
+→ Compliance Screening
+→ Trade Request
+→ Seller Invitation
+→ Seller Registration
+→ Seller Verification
+→ Seller Response.
+
+Admin should be able to identify exactly where each workflow stands.
+
+---
+
+# 16. COMPLETE COMPANY AND TRADE HISTORY
+
+Create persistent records for all important events.
+
+Record:
+- Registration.
+- Email verification.
+- Login.
+- Logout.
+- Login failures.
+- MFA events.
+- Profile changes.
+- Document uploads.
+- Agreement views.
+- Agreement acceptance.
+- Privacy acknowledgement.
+- KYB submission and results.
+- Compliance checks.
+- Admin reviews.
+- Trade request creation.
+- Trade request changes.
+- Seller invitation.
+- Invitation redemption.
+- Seller response.
+- Account restrictions.
+- Security incidents.
+- Notification events.
+
+Each event should contain:
+- Event ID.
+- Organization ID.
+- User ID.
+- Event type.
+- Relevant object ID.
+- Server timestamp in UTC.
+- Previous status.
+- New status.
+- Actor.
+- Relevant evidence reference.
+
+Use append-only audit records.
+
+Do not let ordinary users edit or delete event history.
+
+Buyer sees only its own records and trades.
+
+Seller sees only its own records and information explicitly shared through its authorized trades.
+
+Admin has authorized platform-wide visibility, with sensitive-access logging.
+
+Apply approved retention schedules and data minimization.
+
+---
+
+# 17. BACKEND AND DATABASE ARCHITECTURE
+
+Inspect the existing Phase 1 stack and extend it.
+
+Do not replace a working framework unnecessarily.
+
+If no backend exists, implement a secure persistent backend with a relational database such as PostgreSQL.
+
+Use a mature authentication service or securely implemented authentication layer.
+
+Recommended database entities:
+
+- users.
+- organizations.
+- organization_memberships.
+- authorized_representatives.
+- business_documents.
+- legal_documents.
+- legal_document_versions.
+- agreement_acceptances.
+- privacy_acknowledgements.
+- kyb_verification_records.
+- compliance_source_registry.
+- compliance_screenings.
+- compliance_findings.
+- compliance_reviews.
+- trade_requests.
+- trade_request_versions.
+- seller_invitations.
+- buyer_seller_connections.
+- email_outbox.
+- notifications.
+- audit_events.
+- security_events.
+- admin_actions.
+- retention_policy_config.
+
+Use foreign keys, unique constraints and appropriate indexes.
+
+Enforce tenant-level authorization.
+
+A Buyer cannot read another Buyer's private company data.
+
+A Seller cannot read unrelated Seller or Buyer data.
+
+If using Supabase, implement and test Row Level Security policies.
+
+Never rely only on a frontend Organization ID to establish authorization.
+
+Keep secrets in environment variables or a secret manager.
+
+Do not expose API keys in the browser.
+
+Use background jobs for:
+- Email sending.
+- Verification-provider requests.
+- Compliance screening.
+- Invitation expiry.
+- Retry handling.
+- Source refresh.
+- Admin notifications.
+
+---
+
+# 18. PERMANENT DEMONSTRATION COMPANIES
+
+Create two persistent seeded demonstration companies.
+
+These records must be retained across future phases.
+
+### Demo Buyer
+
+Company: MERIDIAN DEMO BUYER PRIVATE LIMITED
+
+Role: BUYER
+
+Country: India
+
+Email: buyer.demo@meridian.test
+
+Organization ID: DEMO-BUYER-001
+
+### Demo Seller
+
+Company: MERIDIAN DEMO SELLER GMBH
+
+Role: SELLER
+
+Country: Germany
+
+Email: seller.demo@meridian.test
+
+Organization ID: DEMO-SELLER-001
+
+Both companies are fictional demo entities.
+
+Their records must be clearly marked:
+
+DEMO VERIFIED
+
+DEMO SCREENING CLEAR
+
+SIMULATED DOCUMENTATION
+
+These are not real government verification results or legally certified business identities.
+
+### Demo Login
+
+When DEMO_MODE is enabled, show:
+
+- Explore Buyer Demo.
+- Explore Seller Demo.
+
+Authenticate through backend-controlled demo accounts.
+
+Use environment variables or a controlled seeding process for credentials.
+
+Do not put plaintext passwords into frontend source code.
+
+Disable demo login in production.
+
+### Persistent Demo Trade
+
+Seed:
+
+Trade ID: DEMO-TRADE-001
+
+Buyer: DEMO-BUYER-001
+
+Seller: DEMO-SELLER-001
+
+Product: Food-grade flexible packaging film.
+
+Quantity: 5,000 rolls.
+
+Status: AWAITING_SELLER_REVIEW
+
+Purpose: Demonstrating the Buyer–Seller invitation workflow.
+
+Mark all sample trade and company information as simulated.
+
+Preserve these IDs for all subsequent phases.
+
+---
+
+# 19. API AND FUNCTIONAL REQUIREMENTS
+
+Implement secure backend operations for:
+
+Authentication:
+- Register.
+- Verify email.
+- Login.
+- Logout.
+- MFA / OTP.
+- Reset password.
+- Retrieve authenticated account.
+
+Company:
+- Create organization.
+- Check duplicates.
+- Retrieve own profile.
+- Update profile.
+- Upload documents.
+- Retrieve verification status.
+
+Legal documents:
+- Retrieve current legal documents.
+- Retrieve document versions.
+- Record Agreement 1 acceptance.
+- Retrieve acceptance receipts.
+- Retrieve historical acceptance records.
+- Record Privacy Notice acknowledgement.
+
+Verification:
+- Submit KYB.
+- Trigger checks.
+- Retrieve status.
+- Respond to missing information.
+
+Compliance:
+- Run company screening.
+- Run trade screening.
+- Retrieve source-based findings.
+- Submit manual review decision.
+
+Trade requests:
+- Create.
+- Save draft.
+- Edit.
+- Submit.
+- Retrieve permitted requests.
+
+Invitations:
+- Send.
+- Validate.
+- Redeem.
+- Accept.
+- Decline.
+- Request changes.
+- Revoke.
+- Resend.
+
+Notifications:
+- Retrieve.
+- Mark read.
+- Retrieve email event status.
+
+Admin:
+- Company directory.
+- Verification queue.
+- Agreement records.
+- Compliance queue.
+- Trade request monitoring.
+- Invitation monitoring.
+- Audit history.
+- Security events.
+- Authorized review actions.
+
+All operations must enforce backend identity, role and organization ownership.
+
+---
+
+# 20. SECURITY AND TESTING
+
+Test the complete workflow, not just individual page rendering.
+
+### Authentication
+- Buyer can register and log in.
+- Seller can register and log in.
+- Wrong-role login is rejected.
+- Duplicate emails are rejected.
+- Password reset works.
+- Email verification works.
+- Session revocation works.
+
+### Company Identity
+- Duplicate legal entities are detected.
+- Company identity is persistent.
+- One company cannot create a second primary account simply by changing its email.
+- Unauthorized users cannot change company details.
+
+### Agreement 1
+- Master Platform Terms are displayed.
+- Agreement version and hash are recorded.
+- Acceptance is affirmative.
+- Timestamp is server generated.
+- Buyer and Seller independently accept.
+- Old versions remain available.
+- Draft documents are not presented as production-approved legal agreements.
+
+### Compliance
+- Company screening and trade screening are distinct.
+- Source references are stored.
+- Potential matches enter manual review.
+- Inconclusive checks never become clear.
+- Mock data is clearly marked as simulated.
+
+### Invitation
+- Buyer can create a request.
+- Seller receives a secure invitation.
+- Token expires.
+- Token cannot be reused.
+- Wrong recipient cannot redeem invitation.
+- Seller can accept, decline or request changes.
+- Buyer receives status notifications.
+
+### Authorization
+- Buyer cannot access Seller private data.
+- Seller cannot access unrelated company data.
+- Admin access is protected.
+- Every sensitive Admin action is logged.
+- Frontend and API-level authorization are both enforced.
+
+### Notifications
+- Registration.
+- Email verification.
+- Agreement acceptance.
+- Successful login.
+- Verification status.
+- Seller invitation.
+- Seller response.
+
+Use an email capture service in demo mode.
+
+---
+
+# 21. DELIVERABLES
+
+At completion, provide:
+
+1. Functional Buyer authentication.
+2. Functional Seller authentication.
+3. Secure identity-based access.
+4. Persistent company registration.
+5. Duplicate company checks.
+6. Business onboarding.
+7. Authorized representative declaration.
+8. Secure document upload.
+9. Agreement 1 document viewer and acceptance workflow.
+10. Privacy Notice acknowledgement.
+11. Acceptable Use Policy integration.
+12. Conditional DPA handling.
+13. SLA and security-document repository.
+14. KYB workflow.
+15. AI compliance screening framework.
+16. Interactive Buyer dashboard.
+17. Interactive Seller dashboard.
+18. Buyer Trade Request creation.
+19. Secure Seller invitation.
+20. Seller invitation response workflow.
+21. Internal Admin dashboard.
+22. Complete company and trade activity history.
+23. Email notifications.
+24. Persistent demo companies.
+25. Persistent demo trade request.
+26. Database schema and migrations.
+27. Environment variable template.
+28. API documentation.
+29. Automated tests.
+30. Deployment instructions.
+
+---
+
+# 22. STRICT PHASE BOUNDARIES
+
+Do not implement these modules fully yet:
+
+- Subscription checkout and recurring billing.
+- Full Agreement 2 signing.
+- Buyer–Seller contract negotiation.
+- Final transaction schedule execution.
+- Electronic Agent authorization.
+- PayPal real-money integration.
+- Real escrow.
+- IoT hardware integration.
+- Shipment telemetry.
+- Final AI dispute resolution.
+- Automatic refunds or payouts.
+
+Keep the relevant uploaded PDFs available as versioned legal templates for their future phases.
+
+Preliminary Buyer trade requests and Seller invitations are allowed in Phase 2, but they must not be confused with a signed commercial transaction.
+
+---
+
+# FINAL INSTRUCTION
+
+Build Phase 2 as a real backend-supported extension of the existing Meridian SaaS platform.
+
+Use the 12 provided PDFs as the source of truth for the legal document content.
+
+Do not hallucinate, rewrite or invent agreement clauses.
+
+Preserve the NEXUS-inspired dark and neon-lime design system from Phase 1.
+
+Prioritize:
+- Secure identity and company accounts.
+- Agreement 1.
+- Privacy and policy records.
+- Business verification.
+- Source-based compliance screening.
+- Unauthorized-access protection.
+- Buyer–Seller invitation.
+- Admin visibility.
+- Persistent audit history.
+- Permanent demo companies.
+
+All important data must persist in the database.
+
+Every role must be enforced server-side.
+
+Every legal-document action must be versioned and recorded.
+
+Every simulated result must be labelled accurately.
+
+Complete and test the entire Phase 2 workflow before moving to Phase 3.
+
+here are the files:
+MERIDIAN — MASTER PLATFORM TERMS
+Agreement 1 • Meridian and each business account using the platform
+Draft for discussion and legal review. This template is not legal advice and does not establish compliance in every country.
+Complete all bracketed fields, check local law, and obtain review by qualified counsel before use. Do not represent a simulated
+payment, verification, signature or automated action as a live third-party service.
+1. Parties and acceptance
+These Terms are between [Meridian legal entity name], incorporated in [jurisdiction] with its registered address at
+[address] (“Meridian”), and the business or individual accepting these Terms (“Customer”). The person accepting
+confirms they are authorised to bind the Customer. These Terms take effect on the date of electronic acceptance.
+2. Platform service
+Meridian provides software tools for creating and coordinating business workflows, recording transaction information,
+managing evidence, displaying telemetry, supporting workflow decisions and connecting to third-party services. The
+exact features available depend on the Customer’s plan and the applicable order form.
+3. Meridian’s role
+Meridian is a software provider and workflow orchestrator. Unless a separately signed agreement expressly says
+otherwise, Meridian is not the buyer, seller, carrier, insurer, bank, escrow agent, payment institution or guarantor of a
+customer transaction. Meridian does not take ownership of goods or promise that a counterparty will perform.
+4. Customer accounts and authority
+The Customer must provide accurate business information, keep account credentials secure, enable multi-factor
+authentication where available, and promptly remove access for people who are no longer authorised. The Customer is
+responsible for actions taken through its accounts, subject to applicable law and Meridian’s security obligations.
+5. Buyer-seller transactions
+A transaction between a buyer and seller is governed by their separate Buyer-Seller Trade Agreement and transaction
+schedule. Meridian’s platform terms do not replace that agreement. Meridian is not a party to the sale merely because it
+hosts, records or automates workflow steps.
+6. Third-party services and payments
+Third-party services, including payment providers, are governed by their own terms and availability. Where enabled,
+payment instructions are submitted to the selected provider. Meridian does not receive, pool or hold transaction funds
+under this template. Actual product configuration and legal classification must be assessed before production launch.
+7. Automated tools and AI
+AI outputs, risk flags, classifications and recommendations are decision-support tools unless a transaction agreement
+expressly authorises a defined automated action. Customers must configure permissions and review exceptional,
+disputed or high-impact outcomes. Meridian does not guarantee that AI outputs are error-free.
+8. Customer content and permissions
+The Customer retains its rights in content it submits. It grants Meridian a limited licence to host, process, transmit and
+display that content solely to provide, secure, support and improve the contracted service, subject to the Privacy Notice
+and any DPA. The Customer must have the rights and lawful basis needed to submit the content.
+9. Acceptable use and suspension
+Page 1
+MERIDIAN • Draft template for legal review
+The Customer must not misuse the service, interfere with its security, upload unlawful material, infringe third-party
+rights, or attempt unauthorised access. Meridian may restrict access where reasonably necessary to protect users,
+comply with law, investigate abuse or address a material security risk. Meridian will provide notice where lawful and
+practicable.
+10. Confidentiality
+Each party must protect the other party’s non-public business information using reasonable care and use it only for the
+contractual purpose. This does not apply to information independently developed, lawfully received without restriction,
+public through no breach, or required to be disclosed by law.
+11. Service changes and availability
+Meridian may update the service to improve security, reliability or functionality. Material reductions to paid core
+functionality will be handled under the applicable order form or subscription terms. Availability commitments,
+maintenance windows and support targets are described in the SLA.
+12. Fees and taxes
+Fees, billing frequency, renewal, taxes, refunds and cancellation are governed by the Subscription Terms or order form.
+The Customer is responsible for applicable taxes other than taxes on Meridian’s income.
+13. Data protection
+Each party will comply with applicable data protection law. Where Meridian processes personal data on the Customer’s
+behalf, the parties will enter into the Data Processing Agreement where required. The Privacy Notice explains
+Meridian’s own processing as a controller or business, where applicable.
+14. Intellectual property
+Meridian and its licensors own the platform, software, interfaces, documentation and related intellectual property. The
+Customer receives a limited, non-exclusive, non-transferable right to use the service during the subscription term. No
+ownership transfers except as expressly stated.
+15. Disclaimers
+To the maximum extent permitted by law, the service is provided subject to the express commitments in these Terms
+and the SLA. Meridian does not warrant commercial outcomes, counterparty performance, uninterrupted third-party
+services, sensor accuracy or legal enforceability of a customer’s trade terms.
+16. Liability
+Nothing in these Terms excludes liability that cannot lawfully be excluded. Subject to that rule, each party’s aggregate
+liability will be limited to [fee-based cap and period], except for agreed carve-outs such as fraud, wilful misconduct,
+confidentiality breaches, data protection violations or intellectual property infringement, as negotiated and permitted by
+law.
+17. Term and termination
+These Terms continue while the Customer has an account or active subscription. Either party may terminate for material
+breach not remedied within [30] days after notice, or as otherwise stated in the Subscription Terms. On termination,
+access ends and data is handled under the retention and deletion schedule.
+18. Governing law and disputes
+These Terms are governed by the laws of [jurisdiction], excluding conflict-of-law rules, and disputes will be handled in
+[courts/arbitration forum and seat]. This clause must be completed by counsel for the relevant operating entity and
+customer market.
+19. General
+Page 2
+MERIDIAN • Draft template for legal review
+These Terms, the applicable order form, Privacy Notice, DPA where applicable, AUP and SLA form the platform
+agreement. If documents conflict, the following order applies: signed order form, DPA for data-processing matters,
+these Terms, then policies, unless expressly stated otherwise. Amendments must be recorded in writing or through a
+legally valid electronic process.
+Acceptance record
+Customer legal name: [ ] • Registration number: [ ] • Authorised representative: [ ] • Title: [ ] • Work email: [ ] • Accepted
+at (UTC): [ ] • Terms version: [ ] • Electronic acceptance record/reference: [ ]
+Document control: Version 0.1 • Prepared 7 November 2026 • Entity and jurisdiction details to be completed before execution
+
+#MERIDIAN — PRIVACY NOTICE
+Agreement 1 • Notice to platform users, business contacts and visitors
+Draft for discussion and legal review. This template is not legal advice and does not establish compliance in every country.
+Complete all bracketed fields, check local law, and obtain review by qualified counsel before use. Do not represent a simulated
+payment, verification, signature or automated action as a live third-party service.
+1. Who is responsible
+[Meridian legal entity name], of [address], is responsible for personal information processed for its own account
+administration, website, sales, billing, security and support purposes. For customer transaction data processed on a
+customer’s instructions, Meridian may act as a processor/service provider under a separate DPA.
+2. Information we collect
+Depending on use, we may process business contact details, account credentials and security logs, company and
+representative verification information, transaction metadata, uploaded documents and images, support messages,
+device and usage information, and payment status references returned by a payment provider. Do not upload
+unnecessary sensitive personal information.
+3. Purposes and legal grounds
+We use information to create and secure accounts, provide workflows, administer subscriptions, support transactions,
+prevent fraud and abuse, maintain audit records, respond to requests, comply with law and improve the service. Where
+required, we rely on consent, contract necessity, legitimate interests or legal obligations, as applicable.
+4. Sharing
+Information may be shared with the relevant buyer or seller in a transaction, hosting and security providers,
+customer-selected integrations, payment providers, professional advisers, regulators or authorities where legally
+required. We do not sell personal information as a business model under this draft.
+5. International transfers
+Information may be processed in countries where Meridian and its service providers operate. Where transfer rules
+apply, Meridian will use an appropriate legal transfer mechanism and safeguards, such as an adequacy decision or
+approved contractual clauses, as applicable.
+6. Retention
+We retain information only for as long as reasonably necessary for the stated purposes, contractual requirements,
+security, dispute handling and legal obligations. Specific periods are set out in the Data Retention Schedule or customer
+agreement. Transaction records may need to be retained after account closure.
+7. Your rights
+Depending on applicable law, individuals may have rights to access, correct, delete, restrict, object to or receive a copy
+of personal information, and to withdraw consent where processing relies on consent. Requests can be sent to [privacy
+contact email]. Identity verification may be required.
+8. Security and incidents
+Meridian uses reasonable technical and organisational safeguards appropriate to the information and risks. No system
+can be guaranteed completely secure. If a personal data breach occurs, Meridian will follow applicable notification
+duties and the DPA, where relevant.
+Page 1
+MERIDIAN • Draft template for legal review
+9. Cookies and analytics
+The website may use essential cookies and, where permitted, analytics or preference technologies. Where required,
+non-essential cookies will be used only after the required choice or consent. Details and controls will be provided in the
+website cookie notice.
+10. Children
+The platform is designed for business use and is not intended for children. Do not create an account if you are below the
+minimum age required by applicable law.
+11. Changes and contact
+We may update this Notice to reflect service or legal changes. The current version and effective date will be displayed
+at [URL]. Privacy contact: [name/team and email]. Supervisory authority complaints may be available under applicable
+law.
+Document control: Version 0.1 • Prepared 7 November 2026 • Entity and jurisdiction details to be completed before execution.
+Page 
+
+#MERIDIAN — SUBSCRIPTION & BILLING TERMS
+Agreement 1 • Commercial terms for paid platform plans
+Draft for discussion and legal review. This template is not legal advice and does not establish compliance in every country.
+Complete all bracketed fields, check local law, and obtain review by qualified counsel before use. Do not represent a simulated
+payment, verification, signature or automated action as a live third-party service.
+1. Order form
+The selected plan, permitted users, features, billing cycle, fees, currency, start date and any negotiated terms must be
+recorded in an order form accepted by both parties. If no paid order form exists, the account is on the free or trial terms
+displayed at sign-up.
+2. Subscription term and renewal
+A subscription begins on the start date and continues for the stated initial term. It renews for successive
+[monthly/annual] periods unless either party gives notice at least [30] days before renewal, or the order form states
+otherwise.
+3. Fees and payment
+The Customer must pay the fees shown in the order form. Payment method, invoicing schedule, due date and payment
+provider will be identified there. Third-party payment providers process payment under their own terms. Meridian does
+not promise that a provider will approve or settle a payment.
+4. Taxes and withholding
+Fees are exclusive of applicable indirect taxes unless stated otherwise. The Customer is responsible for taxes, duties
+and withholding obligations required by law. The parties will provide reasonable tax documentation where applicable.
+5. Trials and promotional plans
+Trial access may expire or be converted to a paid plan only as disclosed at sign-up. Promotional credits are
+non-transferable, have no cash value and expire on the stated date unless law requires otherwise.
+6. Late payment and suspension
+Overdue undisputed amounts may accrue interest at [rate] or the maximum lawful rate, whichever is lower. Meridian
+may suspend paid features after reasonable notice if an undisputed invoice remains unpaid, while allowing reasonable
+access to retrieve data where practicable.
+7. Changes and cancellation
+Plan changes take effect on the date shown in the account or order form. Cancellation stops future renewal but does not
+automatically refund fees already paid, except where required by law or expressly agreed.
+8. Refunds and disputes
+Billing questions should be sent to [billing email] within [30] days of the invoice. Payment-provider chargebacks and
+disputes are handled under that provider’s rules and do not replace the parties’ contractual dispute process.
+9. Records and audit
+Meridian may maintain invoices, subscription events and payment status references for accounting, security and legal
+purposes in accordance with its retention schedule.
+Page 1
+MERIDIAN • Draft template for legal review
+10. Priority
+These Terms supplement the Master Platform Terms. A signed order form prevails where it expressly varies these
+Terms.
+Document control: Version 0.1 • Prepared 7 November 2026 • Entity and jurisdiction details to be completed before execution.
+
+#MERIDIAN — ACCEPTABLE USE POLICY
+Agreement 1 • Rules for responsible use of the platform
+Draft for discussion and legal review. This template is not legal advice and does not establish compliance in every country.
+Complete all bracketed fields, check local law, and obtain review by qualified counsel before use. Do not represent a simulated
+payment, verification, signature or automated action as a live third-party service.
+1. Permitted use
+Use Meridian only for lawful business workflows and only within the permissions and plan limits assigned to your
+account.
+2. Prohibited conduct
+You must not: (a) break or evade security controls; (b) access another account without permission; (c) upload malware
+or harmful code; (d) use the platform for fraud, sanctions evasion or unlawful trade; (e) misrepresent company identity,
+authority, goods or evidence; (f) infringe intellectual property or privacy rights; (g) interfere with platform availability; or
+(h) use outputs to make unlawful discriminatory decisions.
+3. Account and evidence integrity
+Do not share credentials, falsify telemetry, alter timestamps, submit misleading images or documents, or interfere with
+sensor devices or audit records. Correct inaccurate information promptly.
+4. AI and automation
+Do not configure agents to exceed the authority granted by the relevant company or transaction agreement. Human
+review is required where the workflow flags uncertainty, conflicting evidence, suspected fraud or a high-impact
+exception.
+5. Monitoring and response
+Meridian may monitor platform activity for security, abuse prevention, service operation and legal compliance. Where a
+credible violation is identified, Meridian may investigate, preserve relevant records, restrict access or notify affected
+parties or authorities where appropriate.
+6. Reporting
+Report suspected misuse or compromised credentials to [security email]. Include relevant account or transaction
+references, but do not send passwords or unnecessary personal information.
+7. Enforcement
+Meridian may issue warnings, require corrective action, suspend features or terminate access for material or repeated
+violations, subject to applicable law and the Master Platform Terms.
+Document control: Version 0.1 • Prepared 7 November 2026 • Entity and jurisdiction details to be completed before execution.
+
+#MERIDIAN — SERVICE LEVEL AGREEMENT
+Agreement 1 • Availability, support and service commitments
+Draft for discussion and legal review. This template is not legal advice and does not establish compliance in every country.
+Complete all bracketed fields, check local law, and obtain review by qualified counsel before use. Do not represent a simulated
+payment, verification, signature or automated action as a live third-party service.
+1. Scope
+This SLA applies only to the production services identified in the Customer’s order form. Sandbox, beta, preview,
+third-party and customer-managed systems are excluded unless expressly included.
+2. Availability target
+Meridian’s target is [99.5%] monthly availability for the defined core service, measured as available minutes divided by
+total minutes in the month, excluding permitted exclusions below. This is a target/commitment only once approved and
+operationally supported by Meridian.
+3. Exclusions
+Downtime caused by scheduled maintenance with [48] hours’ notice, emergency security maintenance, customer
+systems or networks, misuse, force majeure, third-party providers, payment networks, telecommunications, or services
+outside Meridian’s reasonable control is excluded.
+4. Support channels and priorities
+Support requests are submitted through [portal/email]. Priority 1: core service unavailable or suspected security
+incident; Priority 2: major function impaired; Priority 3: limited issue or workaround available; Priority 4: general question
+or feature request.
+5. Response targets
+Initial response targets: P1 [1 hour], P2 [4 business hours], P3 [1 business day], P4 [3 business days]. These are
+response targets, not guaranteed resolution times. Support hours and time zone: [details].
+6. Maintenance and communications
+Meridian will use reasonable efforts to provide advance notice of planned maintenance and updates during material
+incidents. Emergency maintenance may occur without advance notice where needed to protect the service or data.
+7. Service credits
+If a monthly availability commitment is missed, the Customer may request a service credit according to the order form:
+[credit table]. Credits are the agreed remedy for SLA failure to the extent permitted by law, subject to any
+non-excludable rights.
+8. Customer responsibilities
+The Customer must maintain supported browsers, secure credentials, provide accurate issue details and cooperate with
+reasonable troubleshooting.
+9. Third-party dependencies
+Availability of payment, identity, mapping, messaging, cloud, IoT and other external services is not controlled by
+Meridian. Meridian will identify material dependencies and communicate known outages where reasonably possible.
+Page 1
+MERIDIAN • Draft template for legal review
+10. Claims and review
+A service-credit request must be submitted within [30] days after the relevant month, with supporting details. This SLA
+supplements the Master Platform Terms.
+Document control: Version 0.1 • Prepared 7 November 2026 • Entity and jurisdiction details to be completed before execution.
+Page 
+
+#MERIDIAN — SERVICE LEVEL AGREEMENT
+Agreement 1 • Availability, support and service commitments
+Draft for discussion and legal review. This template is not legal advice and does not establish compliance in every country.
+Complete all bracketed fields, check local law, and obtain review by qualified counsel before use. Do not represent a simulated
+payment, verification, signature or automated action as a live third-party service.
+1. Scope
+This SLA applies only to the production services identified in the Customer’s order form. Sandbox, beta, preview,
+third-party and customer-managed systems are excluded unless expressly included.
+2. Availability target
+Meridian’s target is [99.5%] monthly availability for the defined core service, measured as available minutes divided by
+total minutes in the month, excluding permitted exclusions below. This is a target/commitment only once approved and
+operationally supported by Meridian.
+3. Exclusions
+Downtime caused by scheduled maintenance with [48] hours’ notice, emergency security maintenance, customer
+systems or networks, misuse, force majeure, third-party providers, payment networks, telecommunications, or services
+outside Meridian’s reasonable control is excluded.
+4. Support channels and priorities
+Support requests are submitted through [portal/email]. Priority 1: core service unavailable or suspected security
+incident; Priority 2: major function impaired; Priority 3: limited issue or workaround available; Priority 4: general question
+or feature request.
+5. Response targets
+Initial response targets: P1 [1 hour], P2 [4 business hours], P3 [1 business day], P4 [3 business days]. These are
+response targets, not guaranteed resolution times. Support hours and time zone: [details].
+6. Maintenance and communications
+Meridian will use reasonable efforts to provide advance notice of planned maintenance and updates during material
+incidents. Emergency maintenance may occur without advance notice where needed to protect the service or data.
+7. Service credits
+If a monthly availability commitment is missed, the Customer may request a service credit according to the order form:
+[credit table]. Credits are the agreed remedy for SLA failure to the extent permitted by law, subject to any
+non-excludable rights.
+8. Customer responsibilities
+The Customer must maintain supported browsers, secure credentials, provide accurate issue details and cooperate with
+reasonable troubleshooting.
+9. Third-party dependencies
+Availability of payment, identity, mapping, messaging, cloud, IoT and other external services is not controlled by
+Meridian. Meridian will identify material dependencies and communicate known outages where reasonably possible.
+Page 1
+MERIDIAN • Draft template for legal review
+10. Claims and review
+A service-credit request must be submitted within [30] days after the relevant month, with supporting details. This SLA
+supplements the Master Platform Terms.
+Document control: Version 0.1 • Prepared 7 November 2026 • Entity and jurisdiction details to be completed before execution.
+Page 
+
+#MERIDIAN — SECURITY, INCIDENT RESPONSE &
+DATA RETENTION SCHEDULE
+Agreement 1 • Operational policy schedule
+Draft for discussion and legal review. This template is not legal advice and does not establish compliance in every country.
+Complete all bracketed fields, check local law, and obtain review by qualified counsel before use. Do not represent a simulated
+payment, verification, signature or automated action as a live third-party service.
+1. Security governance
+Meridian will maintain a documented security programme proportionate to the service, including asset management,
+access control, vulnerability management, secure development, logging, backup and recovery, vendor review and staff
+awareness.
+2. Identity and account controls
+Business onboarding may include company-registry checks, authorised-representative verification, role-based access
+and multi-factor authentication. A company’s legal existence does not by itself prove the authority or trustworthiness of
+every account user.
+3. Security incidents
+A security incident includes suspected unauthorised access, credential compromise, material service disruption, data
+exposure, malicious code or compromised integrations. Meridian will triage, contain, investigate, preserve relevant logs,
+remediate and communicate as required by law and contract.
+4. Customer cooperation
+Customers must promptly report suspected compromise, rotate affected credentials, preserve relevant evidence and
+cooperate with reasonable investigation steps.
+5. Retention schedule
+Proposed default periods, subject to legal and customer requirements: account profile data — account term plus [24]
+months; transaction records and acceptance evidence — [7] years or the legally required period; telemetry and
+supporting evidence — [24] months after transaction closure; security logs — [12] months; support tickets — [24]
+months. Confirm periods with counsel and operational needs before launch.
+6. Deletion and legal holds
+Deletion may be delayed where information is subject to a legal hold, dispute, investigation, regulatory duty or secure
+backup cycle. Deleted information will be removed from active systems within [30] days and from backups within [90]
+days where technically feasible, unless law requires otherwise.
+7. Data minimisation
+Collect only information needed for the stated workflow. Avoid storing identity documents, precise location, biometric
+data or sensitive personal data unless necessary, lawful and supported by appropriate safeguards.
+8. Review
+This schedule must be reviewed at least annually and after a material incident, major product change or significant legal
+change.
+Page 1
+MERIDIAN • Draft template for legal review
+Document control: Version 0.1 • Prepared 7 November 2026 • Entity and jurisdiction details to be completed before execution

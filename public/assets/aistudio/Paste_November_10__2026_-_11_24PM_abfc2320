@@ -1,0 +1,1126 @@
+# MERIDIAN — MASTER PROMPT: PHASE 4
+## Autonomous Trade Execution, PayPal Sandbox, Shipment Monitoring, Cryptographic Verification, Evidence Management and Dispute Resolution
+
+You are developing Phase 4 of Meridian, an international B2B trade workflow orchestration SaaS platform.
+
+Phase 4 begins only after Phase 3 has successfully completed the trade negotiation, preparation and execution of Agreement 2.
+
+Your responsibility is to implement a fully connected, reliable and repeatable operational trade workflow.
+
+The objective is to allow the designated Meridian demo buyer and seller to complete an entire international trade demonstration, including:
+
+- Digital agreement signing and verification records.
+- Actual PayPal Sandbox checkout redirection and virtual payment approval.
+- Payment authorization and supported settlement.
+- Shipment preparation and dispatch.
+- Product and packaging photograph uploads.
+- Telemetry monitoring and cryptographic message verification.
+- AI anomaly detection.
+- Delivery and buyer inspection.
+- One complete internal trade-dispute demonstration.
+- Buyer and seller dispute responses.
+- Settlement workflow.
+- Final PDF audit dossier.
+
+This is a critical implementation stage. Prioritize backend correctness, integration reliability, security, data consistency and a smooth user experience.
+
+# PART 1 — STRICT CHANGE CONTROL
+
+## 1. Preserve the Existing Platform
+
+Do not rebuild Meridian from scratch.
+
+Do not redesign or replace Phase 1, Phase 2 or Phase 3.
+
+Do not independently modify:
+
+- Meridian branding.
+- Logo.
+- Typography.
+- Colour palette.
+- Layout.
+- Navigation.
+- Existing landing page.
+- Existing dashboard design system.
+- Existing membership plans.
+- Company registration.
+- Authentication.
+- Existing agreements.
+- Existing buyer and seller accounts.
+- Existing trade history.
+- Existing administrator permissions.
+
+Do not remove existing functionality.
+
+Do not introduce unrelated features or change the product's business model.
+
+Only implement the features explicitly specified in this prompt and the previously approved Meridian requirements.
+
+Before coding, inspect the existing project, database, APIs, authentication, integrations and existing demo accounts.
+
+Reuse working components and services.
+
+If a required component already exists, extend it instead of creating a duplicate.
+
+If a necessary change could affect previous phases, make the smallest compatible change and explain it before proceeding.
+
+Do not silently make independent product or design decisions.
+
+## 2. Meridian's Role
+
+Meridian is a SaaS orchestration layer.
+
+It coordinates trade workflows, records agreement information, monitors shipment conditions, analyzes evidence, manages approval workflows and connects with supported third-party services.
+
+It is not a bank, payment processor, escrow agent, shipping provider or legal arbitration authority.
+
+PayPal handles only the payment operations actually supported by its APIs.
+
+The demo uses PayPal Sandbox exclusively.
+
+Never claim that Meridian guarantees delivery, payment, escrow protection or dispute outcomes.
+
+# PART 2 — DEMO ENVIRONMENT ISOLATION
+
+## 3. Dedicated Demo Accounts Only
+
+The complete demonstration must work through the dedicated Buyer Demo Company and Seller Demo Company established in earlier phases.
+
+Do not enable this special demo workflow for ordinary registered companies.
+
+Implement server-side demo isolation.
+
+Requirements:
+
+- Reuse existing designated demo company records.
+- Verify demo status through server-controlled account identifiers.
+- Do not trust frontend flags or user-submitted account labels.
+- Separate demo transactions from normal company transactions.
+- Restrict demo simulator controls to authorized demo users.
+- Restrict demo dispute controls to authorized demo users.
+- Restrict demo resets to authorized demo users or administrators.
+- Do not expose secrets or admin credentials.
+- Do not allow normal users to access demo records.
+
+Demo and normal transactions must have clear database-level separation and appropriate authorization checks.
+
+## 4. Repeatable Demo Runs
+
+The complete demo must work every time an authorized judge logs in through the demo side.
+
+Implement a Demo Run ID.
+
+Every new demonstration should have a fresh run identifier and fresh Sandbox payment order.
+
+Provide an authorized Reset Demo Trade feature.
+
+Reset must:
+
+- Reset the local demonstration workflow.
+- Restore the initial demo trade state.
+- Clear current demo simulator readings and temporary demo decisions.
+- Preserve appropriate previous audit records.
+- Preserve normal company data.
+- Never delete or alter real trade records.
+- Never pretend to reverse an external PayPal payment.
+
+Every run must be independently traceable.
+
+# PART 3 — PHASE 4 TRADE LIFECYCLE
+
+## 5. Lifecycle States
+
+Implement a backend-controlled state machine.
+
+Use the following lifecycle:
+
+AGREEMENT_EXECUTED
+→ PAYMENT_PENDING
+→ PAYMENT_AUTHORIZED
+→ SHIPMENT_PREPARATION
+→ DISPATCHED
+→ IN_TRANSIT
+→ ARRIVED
+→ INSPECTION_PENDING
+→ ACCEPTED / DISPUTED
+→ SETTLEMENT_PENDING
+→ SETTLED
+→ COMPLETED
+
+Additional states:
+
+- PAYMENT_FAILED
+- AUTHORIZATION_EXPIRED
+- PAYMENT_CANCELLED
+- UNDER_REVIEW
+- DISPUTE_PENDING
+- SETTLEMENT_FAILED
+- CANCELLED
+
+All status transitions must be validated by the backend.
+
+Frontend controls must never be able to directly assign protected lifecycle states.
+
+# PART 4 — DIGITAL AGREEMENT SIGNING AND ACTIVATION
+
+## 6. Agreement 2 Validation
+
+Retrieve the final Agreement 2 generated in Phase 3.
+
+Before activating the trade, verify:
+
+- Correct buyer and seller.
+- Correct trade ID.
+- Correct agreement version.
+- Required approvals and signing records.
+- Authorized representative information.
+- Final document integrity.
+- Agreed product and quantity.
+- Price and currency.
+- Payment terms.
+- Shipment terms.
+- Inspection conditions.
+- Telemetry conditions.
+- Dispute and settlement conditions.
+
+Calculate and preserve the SHA-256 hash of the final agreement PDF.
+
+Preserve the structured agreement data.
+
+If the agreement is unsigned, invalidated or materially changed after signing, stop the execution workflow.
+
+## 7. Digital Signature Records
+
+Use the existing Phase 3 signing architecture.
+
+Do not allow AI agents to sign on behalf of either company.
+
+The authorized company representatives must complete the configured signing process.
+
+Record:
+
+- Signatory identity.
+- Company.
+- Authorized role.
+- Agreement ID.
+- Agreement version.
+- Signing method.
+- Timestamp.
+- Timezone.
+- Consent record.
+- Signing provider reference, where applicable.
+- Verification result.
+
+Clearly distinguish typed-name acceptance, drawn electronic signatures, third-party e-signatures and cryptographic digital signatures.
+
+If the current demo uses a signature pad, label it as a demo electronic-signature interaction. Do not claim that it is a legally verified digital signature unless the actual implementation supports that claim.
+
+# PART 5 — ACTUAL PAYPAL SANDBOX INTEGRATION
+
+## 8. Mandatory PayPal Integration
+
+This is a critical requirement.
+
+Do not build a fake PayPal button or simulated checkout page.
+
+Implement the actual PayPal Developer Sandbox integration.
+
+Official documentation:
+
+https://developer.paypal.com/api/rest/integration/orders-api
+
+Use the PayPal Orders v2 API and supported Checkout integration.
+
+Environment:
+
+PAYPAL_ENVIRONMENT=sandbox
+
+PAYPAL_CLIENT_ID
+PAYPAL_CLIENT_SECRET
+PAYPAL_BASE_URL
+PAYPAL_WEBHOOK_ID
+
+Sandbox base URL:
+
+https://api-m.sandbox.paypal.com
+
+All sensitive API requests must originate from the backend.
+
+Never expose the client secret or access token in the frontend.
+
+Never hardcode credentials.
+
+## 9. PayPal Sandbox Accounts
+
+Use separate PayPal Sandbox accounts:
+
+- Sandbox Personal Account: buyer.
+- Sandbox Business Account: seller.
+
+The buyer must be able to log into the Sandbox Personal Account during the demonstration.
+
+The Sandbox Business Account must be configured as the receiving account where required by the chosen payment integration.
+
+Do not confuse the Meridian company login with the PayPal Sandbox login.
+
+They are separate authentication systems.
+
+## 10. Buyer Payment Experience
+
+The buyer dashboard must display a payment section with:
+
+- Trade ID.
+- Buyer.
+- Seller.
+- Agreement amount.
+- Currency.
+- Payment status.
+- PayPal Sandbox environment label.
+
+Include a prominent button:
+
+PROCEED TO PAYPAL SANDBOX
+
+When clicked:
+
+1. Validate the trade on the backend.
+2. Validate the agreed amount and currency.
+3. Create a new PayPal Sandbox Order using the Orders v2 API.
+4. Use AUTHORIZE intent for the intended delayed-capture workflow, where supported.
+5. Configure the actual return and cancellation URLs.
+6. Retrieve the approval URL from PayPal.
+7. Redirect the buyer to the actual PayPal Sandbox checkout page.
+8. Allow the buyer to authenticate with the Sandbox Personal Account.
+9. Allow the buyer to approve the virtual payment.
+10. Return the buyer to Meridian.
+11. Retrieve and verify the order from the backend.
+12. Perform the supported authorization operation.
+13. Store the actual provider response and transaction references.
+14. Update the payment status only after verification.
+
+Do not treat returning to Meridian as payment success.
+
+Do not hardcode a success response.
+
+Do not skip the actual PayPal redirect.
+
+## 11. Payment Authorization and Capture
+
+Use the correct PayPal API operations.
+
+Separate:
+
+- Order creation.
+- Buyer approval.
+- Authorization.
+- Capture.
+- Refund.
+
+Do not call an authorization an escrow deposit.
+
+The backend must track authorization expiry and supported capture timing.
+
+If the authorization expires:
+
+- Mark it AUTHORIZATION_EXPIRED.
+- Notify the parties.
+- Prevent capture against the expired authorization.
+- Require a supported reauthorization or alternative reviewed workflow.
+
+After the inspection and settlement conditions have been satisfied, capture the authorized payment only if it remains valid and the provider permits the operation.
+
+If capture fails, record the actual failure and do not mark the payment settled.
+
+## 12. PayPal Sandbox Labels
+
+Display a visible and persistent notice:
+
+PAYPAL SANDBOX — VIRTUAL TEST PAYMENT — NO REAL MONEY TRANSFERRED.
+
+Display this in:
+
+- Checkout section.
+- Payment confirmation.
+- Transaction history.
+- Buyer dashboard.
+- Seller dashboard.
+- Admin dashboard.
+- Final audit PDF.
+
+Use actual provider IDs and statuses.
+
+Never invent transaction IDs.
+
+# PART 6 — PAYPAL WEBHOOKS
+
+## 13. Webhook Reliability
+
+Configure the supported PayPal Sandbox webhook integration.
+
+Official documentation:
+
+https://developer.paypal.com/api/rest/webhooks/
+
+Implement:
+
+- Webhook endpoint.
+- Signature verification.
+- Event ID storage.
+- Duplicate-event protection.
+- Idempotent processing.
+- Event logging.
+- Error handling.
+- Payment-state reconciliation.
+
+Never trust an unverified webhook.
+
+Never update payment status solely because a browser redirect occurred.
+
+If webhook configuration is unavailable, report the missing configuration and implement a clearly documented server-side status retrieval fallback.
+
+# PART 7 — SHIPMENT PREPARATION
+
+## 14. Seller Shipment Submission
+
+After the required payment authorization has been verified, unlock shipment preparation.
+
+The seller must be able to submit:
+
+- Product details.
+- Agreed quantity.
+- Packaging details.
+- Origin.
+- Destination.
+- Carrier.
+- Tracking number.
+- Dispatch date.
+- Estimated arrival.
+- Shipping documents.
+- Packing photographs.
+- Product-condition photographs.
+
+Allow multiple photographs and document uploads.
+
+Store every file securely.
+
+For each file record:
+
+- Evidence ID.
+- Trade ID.
+- Demo Run ID, where applicable.
+- Uploading company.
+- Uploading user.
+- Timestamp.
+- File type.
+- Storage reference.
+- SHA-256 hash.
+
+Do not silently overwrite existing evidence.
+
+## 15. Buyer Review
+
+Allow the buyer to review the submitted documents and photographs.
+
+The buyer should receive a notification when shipment preparation is submitted.
+
+Require an explicit dispatch confirmation before changing the shipment status to DISPATCHED.
+
+Record the action in the audit trail.
+
+# PART 8 — TELEMETRY AND AI SENTINEL
+
+## 16. Backend Telemetry Service
+
+Implement a proper telemetry ingestion service.
+
+Suggested endpoint:
+
+POST /api/telemetry/ingest
+
+Support:
+
+- Temperature.
+- Humidity.
+- GPS.
+- Timestamp.
+- Device ID.
+- Trade ID.
+- Shipment ID.
+- Sensor status.
+
+Validate device identity, trade association, timestamps, payload structure, duplicate records and message authenticity.
+
+Reject unauthorized or invalid telemetry.
+
+## 17. Demo Telemetry Simulator
+
+Implement an interactive simulator exclusively for the designated demo trade.
+
+Controls:
+
+- START SHIPMENT SIMULATION.
+- GENERATE NORMAL READING.
+- SIMULATE TEMPERATURE SPIKE.
+- SIMULATE DELIVERY DELAY.
+- SIMULATE DESTINATION ARRIVAL.
+- PAUSE SIMULATION.
+
+Use the actual contract SLA.
+
+For the demonstration, if the agreed range is 2°C–8°C, use readings such as:
+
+- 4°C: normal.
+- 6°C: normal.
+- 8.5°C: warning.
+- 11.5°C: breach.
+
+All simulator-generated records must be visibly labelled SIMULATED DEMO TELEMETRY.
+
+The controls must update the backend and database, not just animate the frontend.
+
+## 18. Cryptographic Telemetry Verification
+
+Implement HMAC-SHA256 verification for the demo telemetry messages.
+
+Use a server-controlled demo key.
+
+Store keys securely.
+
+Record:
+
+- Device ID.
+- Key ID.
+- Algorithm.
+- Payload hash.
+- Timestamp.
+- Verification result.
+
+Reject invalid messages.
+
+Do not claim that simulated HMAC records are actual TPM-backed hardware signatures.
+
+For real physical devices, provide a separate architecture for securely registered devices and hardware-backed authentication if supported.
+
+Clearly distinguish simulated device authentication from real hardware-backed signatures.
+
+## 19. AI Sentinel
+
+The AI Sentinel must:
+
+- Compare telemetry with the contractual SLA.
+- Detect anomalies.
+- Calculate breach duration.
+- Identify missing or invalid readings.
+- Summarize the issue.
+- Attach relevant evidence.
+- Notify both companies.
+- Recommend the appropriate next action.
+
+Every anomaly record must include:
+
+- Alert ID.
+- Trade ID.
+- Observed value.
+- Contractual threshold.
+- Timestamp.
+- Duration, where known.
+- Evidence references.
+- Verification status.
+- Recommended action.
+
+The AI must not fabricate readings or make legally binding decisions.
+
+# PART 9 — ARRIVAL, DELIVERY AND INSPECTION
+
+## 20. Delivery Evidence
+
+When the shipment arrives, the seller must submit:
+
+- Delivery confirmation.
+- Delivery receipt.
+- Carrier confirmation, if available.
+- Destination photographs.
+- Relevant documents.
+
+GPS arrival alone must not constitute proof of delivery or acceptance.
+
+## 21. Buyer Inspection
+
+Create a buyer inspection interface.
+
+The buyer can:
+
+- View packing photographs.
+- View delivery photographs.
+- View shipment documents.
+- View telemetry history.
+- View shipment details.
+- Verify received quantity.
+- Record product condition.
+- Upload inspection photographs.
+- Accept the goods.
+- Accept with an exception.
+- Report a discrepancy.
+
+Inspection status:
+
+- INSPECTION_PENDING.
+- ACCEPTED.
+- ACCEPTED_WITH_EXCEPTION.
+- DISCREPANCY_REPORTED.
+
+Require an explicit buyer decision.
+
+Record every action and supporting evidence.
+
+# PART 10 — INTERNAL MERIDIAN DISPUTE DEMONSTRATION
+
+## 22. One Complete Dispute Scenario
+
+Build one complete, working dispute demonstration for the designated demo trade.
+
+Scenario:
+
+- Agreement specifies 2°C–8°C.
+- Normal readings appear during transit.
+- Judge triggers a reading of 11.5°C.
+- Backend verifies the demo telemetry message.
+- AI Sentinel identifies the breach.
+- Meridian creates a trade-dispute case.
+- Supporting telemetry and relevant photographs are attached.
+- Buyer and seller receive notifications.
+
+The dispute must include:
+
+- Dispute ID.
+- Trade ID.
+- Contractual clause.
+- Observed temperature.
+- Breach duration.
+- Supporting telemetry.
+- Verification status.
+- Related photographs.
+- Detection timestamp.
+- AI explanation.
+- Current status.
+
+## 23. Buyer and Seller Responses
+
+Allow both parties to:
+
+- Review evidence.
+- Submit explanations.
+- Upload supporting documents.
+- Review proposed adjustments.
+- Accept or reject a proposal.
+- Request further review.
+
+Statuses:
+
+ANOMALY_DETECTED
+→ DISPUTE_CREATED
+→ BUYER_REVIEW
+→ SELLER_RESPONSE
+→ EVIDENCE_REVIEW
+→ PROPOSED_RESOLUTION
+→ ACCEPTED / REJECTED / UNDER_REVIEW
+→ RESOLVED / ESCALATED
+
+If both parties agree to an adjustment, record their decisions and calculate the agreed amount.
+
+If they disagree, pause automated settlement.
+
+Do not allow AI to impose penalties or independently decide a commercial dispute.
+
+## 24. PayPal Disputes API
+
+Investigate and implement the official PayPal Disputes API in Sandbox if supported by the account, permissions and eligible test transaction.
+
+Documentation:
+
+https://developer.paypal.com/platforms/disputes/integrate-disputes/
+
+https://developer.paypal.com/disputes/test-go-live
+
+Keep PayPal payment disputes separate from Meridian commercial disputes.
+
+Do not automatically create a PayPal dispute when telemetry breaches an SLA.
+
+If PayPal Sandbox supports the configured demonstration:
+
+- Use the supported operation.
+- Store the actual PayPal dispute ID.
+- Display the actual provider status.
+- Record provider responses.
+
+If it is unavailable:
+
+- Complete the internal Meridian dispute demo.
+- Display PayPal Disputes API as NOT CONFIGURED or NOT AVAILABLE.
+- Do not invent a PayPal dispute ID or claim a dispute was submitted.
+
+# PART 11 — EMAIL VERIFICATION AND NOTIFICATIONS
+
+## 25. Email Integration
+
+Integrate a real email provider using secure backend credentials.
+
+Implement:
+
+- Email verification links or OTP.
+- Expiry.
+- Single-use tokens.
+- Resend verification.
+- Rate limiting.
+- Verification records.
+- Delivery status where supported.
+- Secure token storage.
+
+Use controlled test inboxes for the demo.
+
+Demo email verification must remain isolated from normal users.
+
+Do not claim an email is verified unless the provider-backed verification succeeded or the account has been explicitly seeded as verified for the demonstration.
+
+## 26. Notifications
+
+Send appropriate notifications to buyer and seller for:
+
+- Payment authorization.
+- Shipment preparation.
+- Dispatch.
+- Temperature anomaly.
+- Delivery.
+- Inspection.
+- Dispute creation.
+- Dispute response.
+- Proposed resolution.
+- Dispute resolution.
+- Payment settlement.
+- Trade completion.
+
+Include the Trade ID and secure dashboard links.
+
+Never include credentials or confidential payment details in emails.
+
+# PART 12 — WEB RESEARCH AND RISK CHECKS
+
+## 27. Web Research Agent
+
+Extend the existing Phase 2 research system.
+
+Search relevant authoritative public sources for:
+
+- Company registration information.
+- Relevant sanctions and restricted-party information.
+- Product-related shipment restrictions.
+- Import/export requirements.
+- Relevant customs and regulatory documentation.
+- Public shipment-related warnings.
+
+For each finding, store:
+
+- Source name.
+- Source URL.
+- Retrieval timestamp.
+- Jurisdiction.
+- Finding.
+- Confidence.
+- Review status.
+
+Distinguish verified facts from AI-generated interpretations.
+
+Do not claim that automated research guarantees compliance or proves that a shipment is lawful.
+
+Do not invent research findings.
+
+If sources are unavailable, flag the issue for review.
+
+# PART 13 — FINAL CRYPTOGRAPHIC RECORDS AND PDF
+
+## 28. Integrity Records
+
+Calculate SHA-256 hashes for:
+
+- Agreement PDF.
+- Uploaded photographs.
+- Shipment documents.
+- Inspection evidence.
+- Telemetry batches or defined telemetry manifests.
+- Final audit dossier.
+
+For a server-generated integrity manifest, use a properly managed asymmetric signing key where feasible.
+
+Never expose private signing keys to the frontend.
+
+Clearly identify the actual signing and authentication method.
+
+Do not claim that a hash proves legal enforceability or that HMAC proves physical hardware origin.
+
+## 29. Final Audit PDF
+
+Generate a professional, downloadable PDF from actual backend records.
+
+Include:
+
+1. Trade summary.
+2. Buyer and seller details.
+3. Agreement 2 ID and hash.
+4. Buyer and seller signing records.
+5. Signing timestamps and methods.
+6. PayPal Sandbox Order ID.
+7. Authorization reference.
+8. Capture reference, if applicable.
+9. Actual provider payment status.
+10. Shipment origin and destination.
+11. Carrier and tracking details.
+12. Dispatch and delivery timestamps.
+13. Temperature and humidity history.
+14. Telemetry verification records.
+15. Device ID and algorithm.
+16. Payload hashes.
+17. SLA thresholds.
+18. Anomaly history.
+19. Pre-dispatch photographs.
+20. Delivery photographs.
+21. Buyer inspection photographs.
+22. Evidence IDs and hashes.
+23. Internal dispute history.
+24. Buyer and seller responses.
+25. Agreed resolution.
+26. Final payment status.
+27. Trade outcome.
+28. Final integrity manifest.
+
+Display photographs inside the PDF, not just their filenames.
+
+For each photograph, show its evidence ID, uploader, timestamp and hash.
+
+Include a clear explanation distinguishing:
+
+- Electronic acceptance.
+- Verified third-party e-signature.
+- Meridian server signature.
+- Simulated HMAC telemetry verification.
+- Actual hardware-backed device signature, only if implemented.
+
+The PDF must visibly state:
+
+"PAYPAL SANDBOX — VIRTUAL TEST PAYMENT. NO REAL MONEY WAS TRANSFERRED."
+
+The PDF must be generated from stored records, not hardcoded example text.
+
+Provide the same final trade dossier to both companies, subject to permissions.
+
+# PART 14 — PHASE 5 COMPLETION
+
+## 30. Trade Closure
+
+Phase 5 must close the trade only after the required conditions are satisfied.
+
+Generate a final completion report and update both company trade histories.
+
+Final statuses:
+
+- COMPLETED.
+- DISPUTED.
+- UNDER_REVIEW.
+- PENDING_SETTLEMENT.
+- CANCELLED.
+
+A disputed or unsettled trade must not be marked COMPLETED.
+
+The final report must include agreement, payment, shipment, inspection, telemetry, evidence, dispute and settlement records.
+
+# PART 15 — ADMIN AND DASHBOARD INTEGRATION
+
+## 31. Buyer Dashboard
+
+Display:
+
+- Agreement status.
+- PayPal Sandbox payment.
+- Shipment status.
+- Evidence photographs.
+- Telemetry.
+- Alerts.
+- Delivery.
+- Inspection.
+- Dispute case.
+- Settlement.
+- Final audit PDF.
+
+## 32. Seller Dashboard
+
+Display:
+
+- Payment authorization.
+- Shipment preparation.
+- Document and photo uploads.
+- Dispatch confirmation.
+- Telemetry.
+- Anomaly alerts.
+- Delivery evidence.
+- Inspection status.
+- Dispute responses.
+- Settlement.
+- Final audit PDF.
+
+## 33. Admin Dashboard
+
+Display:
+
+- Active trades.
+- Buyer and seller.
+- Trade lifecycle.
+- PayPal provider status.
+- Shipment status.
+- Telemetry verification.
+- Open disputes.
+- Integration errors.
+- Demo and normal trade distinction.
+- Audit history.
+
+Only authorized administrators may access platform-wide records.
+
+# PART 16 — MANDATORY END-TO-END DEMONSTRATION
+
+## 34. Required Judge Demonstration
+
+Test this exact scenario using the designated demo accounts.
+
+1. Log in as Buyer Demo.
+2. Log in as Seller Demo.
+3. Verify both are correctly identified as demo accounts.
+4. Open the executed Agreement 2.
+5. Review its signature and integrity records.
+6. Buyer clicks Proceed to PayPal Sandbox.
+7. Backend creates a fresh PayPal Sandbox Order.
+8. Browser redirects to the actual PayPal Sandbox checkout.
+9. Buyer logs in with the designated Sandbox Personal Account.
+10. Buyer approves the virtual payment.
+11. Buyer returns to Meridian.
+12. Backend verifies the authorization response.
+13. Meridian displays the actual payment status and order reference.
+14. Seller uploads packing photographs.
+15. Seller uploads shipment documents.
+16. Buyer reviews the evidence.
+17. Seller confirms dispatch.
+18. Judge starts the telemetry simulator.
+19. Normal readings appear.
+20. GPS movement appears.
+21. Judge triggers a temperature spike to 11.5°C.
+22. Backend verifies the demo message.
+23. AI Sentinel detects the SLA breach.
+24. Meridian creates the internal dispute.
+25. Evidence is attached automatically.
+26. Buyer submits a response.
+27. Seller submits a response.
+28. Both parties review the proposed resolution.
+29. Demonstrate mutual agreement.
+30. Seller uploads delivery evidence.
+31. Buyer uploads inspection photographs.
+32. Buyer records the inspection decision.
+33. Backend checks payment authorization validity.
+34. If valid, the supported PayPal Sandbox capture operation is performed.
+35. Backend verifies the actual provider response.
+36. Meridian updates the settlement status.
+37. Final audit PDF is generated.
+38. Both parties access the PDF.
+39. Phase 5 records the final trade outcome.
+40. Authorized demo reset permits a fresh demonstration.
+
+Every step must work through actual connected backend operations.
+
+Do not skip steps or simulate successful external operations without clearly identifying them as simulations.
+
+# PART 17 — FAILURE HANDLING AND TESTING
+
+## 35. Mandatory Failure Tests
+
+Test:
+
+- PayPal checkout cancellation.
+- PayPal API failure.
+- Authorization failure.
+- Authorization expiry.
+- Duplicate payment request.
+- Invalid webhook.
+- Invalid telemetry authentication.
+- Unauthorized telemetry submission.
+- Temperature breach.
+- Missing evidence.
+- Delivery delay.
+- Buyer rejection.
+- Dispute disagreement.
+- Payment capture failure.
+- Email verification expiry.
+- Unauthorized document access.
+- Normal account attempting demo access.
+- PDF generation failure.
+- Repeated demo reset and execution.
+
+Every failed operation must preserve the actual state and show an understandable error.
+
+Do not silently advance the trade lifecycle.
+
+# FINAL INSTRUCTION
+
+This implementation must be reliable, repeatable and carefully integrated.
+
+Do not prioritize visual appearance over functional backend correctness.
+
+Do not make unrequested changes.
+
+Do not rebuild existing features.
+
+Do not fabricate PayPal responses, signatures, emails, sensor readings, research findings or dispute outcomes.
+
+Every important button must perform its intended backend action.
+
+Every payment must reflect the actual PayPal Sandbox response.
+
+Every evidence file must be stored and traceable.
+
+Every telemetry record must have a verification status.
+
+Every dispute must have a complete decision history.
+
+Every final PDF must represent actual stored records.
+
+Every demo feature must be isolated from normal registered companies.
+
+Before declaring Phase 4 complete, demonstrate the entire judge workflow successfully and provide an implementation report identifying any external integrations that still require configuration.
+
+**The goal is a complete working Meridian trade demonstration, not merely a prototype interface.**
+
+
+
+# MERIDIAN — PHASE 4 API CONFIGURATION & SECRET MANAGEMENT
+
+Integrate the external services required for Phase 4 into the existing Meridian application.
+
+## 1. Integration requirements
+
+Use the following environment variables and connect them through secure server-side code:
+
+- `PAYPAL_CLIENT_ID`
+- `PAYPAL_CLIENT_SECRET`
+- `PAYPAL_WEBHOOK_ID`
+- `PAYPAL_ENVIRONMENT=sandbox`
+- `RESEND_API_KEY`
+- `TAVILY_API_KEY`
+- `SUPABASE_URL`
+- `SUPABASE_PUBLISHABLE_KEY`
+- `SUPABASE_SECRET_KEY`
+- `MERIDIAN_SIGNING_PRIVATE_KEY`
+- `MERIDIAN_SIGNING_PUBLIC_KEY`
+
+Use each integration for its intended purpose:
+
+- **PayPal:** Sandbox payment/order operations and verified webhook notifications.
+- **Resend:** Email verification, invitations, agreement notifications and trade updates.
+- **Tavily:** External web research and source-backed information retrieval.
+- **Supabase:** Private storage for uploaded evidence, trade documents, photographs and generated PDFs, only if equivalent secure storage is not already implemented.
+- **Meridian signing keys:** Server-side cryptographic signing and verification of document integrity and audit manifests. Keep company signatory signatures separate from Meridian's server integrity signature.
+
+If an equivalent working service already exists in the application, reuse it instead of creating duplicate infrastructure.
+
+## 2. Confidentiality and security — mandatory
+
+- All API keys, private keys, client secrets and access tokens must remain exclusively in Google AI Studio's server-side Secrets/environment configuration.
+- Never hardcode credentials into frontend code, HTML, JavaScript bundles, public configuration files or GitHub.
+- Never expose secret values through browser responses, logs, error messages, PDFs or admin dashboards.
+- Frontend components must communicate with authenticated backend endpoints. The backend must perform external API requests.
+- Apply least-privilege permissions wherever supported.
+- Validate user permissions before allowing access to trade documents, evidence, payment operations or signing functions.
+- Use secure authentication, role-based access control, file validation, private storage policies and signed/temporary file access URLs.
+- Verify PayPal webhook signatures before processing events. Reject invalid or duplicate events and implement idempotency.
+- Never trust frontend payment statuses or telemetry values as proof of an actual external event.
+- Do not use real payment credentials. Keep PayPal in Sandbox throughout this prototype.
+- Do not log full credentials or sensitive document contents.
+
+## 3. Integration and workflow rules
+
+- Connect each service to the corresponding Phase 4 backend module.
+- Use real API responses wherever credentials and provider capabilities permit.
+- Do not fabricate successful API responses or pretend an integration is operational when credentials are missing.
+- If a key is unavailable, display a clear configuration-required status and provide a safe demo fallback where appropriate.
+- Clearly distinguish simulated telemetry, test payments, cryptographic integrity checks and actual provider-confirmed events.
+- Store evidence metadata, uploader identity, trade ID, timestamps, file hashes and verification results.
+- Ensure uploaded evidence photographs can be embedded in the final audit PDF with their associated metadata.
+- Do not claim that a cryptographic hash alone proves the authenticity of a photograph or the physical origin of telemetry.
+- Do not describe PayPal Sandbox as escrow or claim that it guarantees conditional payment release.
+
+## 4. Webhook configuration
+
+Create a backend HTTPS webhook endpoint for PayPal Sandbox.
+
+After deployment, provide its exact URL so it can be registered in the PayPal Developer Dashboard. Store the returned webhook ID securely in `PAYPAL_WEBHOOK_ID`.
+
+Verify webhook signatures, validate event types, prevent duplicate processing and persist relevant event records.
+
+Do not invent a webhook URL before the backend has been deployed.
+
+## 5. Configuration and testing
+
+Before marking Phase 4 integrations complete:
+
+1. Check whether every required secret exists without displaying its value.
+2. Test email delivery using an approved test recipient.
+3. Test web research and source retrieval.
+4. Test private evidence upload and retrieval permissions.
+5. Test PDF generation and cryptographic signature verification.
+6. Test PayPal Sandbox order/payment operations and webhook verification.
+7. Test invalid credentials, failed requests, duplicate webhook events and unavailable services.
+8. Confirm that no secret is present in frontend bundles or browser network responses.
+
+Create an integration status section visible only to authorized administrators. Show service name, configured/not configured status, last successful test and safe error information. Never display secret values.
+
+## 6. Preserve the existing application
+
+This is an integration task, not a rebuild.
+
+- Preserve all working Phase 1, Phase 2 and Phase 3 features.
+- Preserve the existing Meridian branding, visual design, layouts, navigation, database records and workflows.
+- Do not remove or replace existing authentication, onboarding, agreements, subscriptions, buyer/seller dashboards or admin controls.
+- Reuse existing backend architecture and data models wherever possible.
+- Do not mark Phase 4 complete until the required integrations have been tested and their actual status is recorded.
+
+**Final priority: credential confidentiality, backend security, accurate provider integration, reliable records and transparent demo limitations.**
+
+
+### OPTIONAL THIRD-PARTY SERVICES — DO NOT REMOVE CORE FEATURES
+
+We are not connecting Dropbox Sign, DocuSign, AWS KMS or separate hosting services at this prototype stage.
+
+However, all corresponding user-facing functionality must remain implemented.
+
+1. Implement separate buyer and seller electronic signature/acceptance interfaces using the existing backend. Record each party's identity, organization, agreement version, timestamp and signature/acceptance evidence. Clearly label the prototype signature method and do not claim automatic legal validity.
+
+2. Implement secure evidence uploads with actual photograph previews, persistent storage, metadata, timestamps, uploader identity, trade ID and SHA-256 file hashes. Include the actual uploaded photographs in the final audit PDF.
+
+3. Implement server-side SHA-256 document hashing and verification. Use a securely generated server-managed signing key if supported by the existing backend. Clearly distinguish document integrity verification from a legally recognized digital signature.
+
+4. Generate a complete downloadable audit PDF using actual persisted backend records, not fabricated sample data.
+
+5. Reuse existing Google AI Studio backend and deployment infrastructure wherever suitable. Do not remove features or create duplicate services simply because optional external providers are not connected.
+
+6. If persistent storage, signing-key protection or public HTTPS hosting is unavailable, identify the limitation and request the required configuration instead of pretending the feature works.
+
+The absence of optional third-party integrations must never silently disable these core demo workflows.
+
+-------------------------------------------
+
+Before deployment, verify that all Phase 4 backend routes and integrations are implemented. Identify missing environment variables, confirm that the PayPal webhook handler exists, and provide its exact HTTP method and route path. Do not invent a webhook URL. Confirm that the backend is ready for deployment.
+
+### FINAL PHASE 4 IMPLEMENTATION CLARIFICATIONS
+
+1. Configure PAYPAL_BASE_URL as https://api-m.sandbox.paypal.com for Sandbox.
+2. Use one purchase_unit for each PayPal AUTHORIZE order.
+3. Select webhook event types appropriate to the actual Orders v2 and Payments v2 AUTHORIZE/CAPTURE workflow. Use the exact currently supported PayPal event names.
+4. Ensure photographs, uploaded documents and generated PDFs use persistent storage. Never rely on Cloud Run's temporary local filesystem for permanent records.
+5. Reuse Phase 3's existing company signing and approval architecture. Do not create duplicate signature workflows.
+6. Generate Meridian's cryptographic key pair once, retain it across restarts and redeployments, and keep the private key exclusively server-side.
+7. Phase 4 must prepare the final records and completion information for Phase 5, without implementing the entire Phase 5 workflow.
+8. Do not report any feature as working until its backend implementation and relevant end-to-end tests have succeeded.

@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --color-surface-bg: #08090A;
+  --color-surface-charcoal: #111315;
+  --color-surface-card: #171A1C;
+  --color-brand-lime: #D7FF43;
+  --color-brand-text: #F5F5F2;
+  --color-brand-muted: #999D9B;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: #08090A;
+  color: #F5F5F2;
+}
+
+::selection {
+  background-color: #D7FF43;
+  color: #08090A;
+}
+
+/* Custom scrollbar for dark minimalism */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #08090A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #23272A;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3A4045;
+}
+

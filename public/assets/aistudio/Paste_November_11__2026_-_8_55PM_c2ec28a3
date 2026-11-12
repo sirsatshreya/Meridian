@@ -1,0 +1,1915 @@
+# MERIDIAN — MASTER APPLICATION DEBUGGING, REPAIR & END-TO-END IMPLEMENTATION PROMPT
+## Complete Platform Repair | Agreements 1 & 2 | Digital Signatures | Invitations | AI Verification | PayPal Sandbox | Shipment | Evidence | Disputes | Repeatable Demo
+
+You are working on the existing Meridian application in Google AI Studio.
+
+This is a critical debugging and completion task. The application already has previous phases, existing UI, backend code, APIs, database structures, workflows and design decisions.
+
+**Do not build a new application. Do not start over. Inspect, repair, integrate and complete the existing Meridian application.**
+
+The objective is to make the entire platform functional from the first company login through final trade execution, while preserving the existing architecture and preparing a clean handoff to Phase 5.
+
+The application must work as a real interactive demonstration. Every important button, form, signature pad, PDF, invitation, payment action, evidence upload, verification process and status transition must actually work.
+
+Do not simply create attractive screens that display information without performing the corresponding backend operations.
+
+---
+
+# PART 1 — FIRST: FULL APPLICATION INSPECTION AND DEBUGGING
+
+## 1. Inspect the Existing Project Before Changing Anything
+
+Before writing or modifying code, inspect the complete existing application.
+
+Review:
+
+- Frontend components and pages.
+- Backend routes and API handlers.
+- Authentication and session management.
+- Database schema and existing records.
+- Buyer and seller dashboards.
+- Admin dashboard.
+- Phase 1 landing page.
+- Phase 2 registration and company verification.
+- Phase 3 membership, invitations and agreement generation.
+- Phase 4 execution and payment workflows.
+- Existing PDF generation services.
+- Existing digital-signature components.
+- Evidence upload and file retrieval.
+- Persistent storage configuration.
+- PayPal Sandbox integration.
+- Resend email integration.
+- Webhook configuration.
+- AI research and verification integrations.
+- Environment variables and Secrets.
+- Existing demo accounts and demo data.
+- Existing error logs and failed requests.
+
+Identify all broken, incomplete, disconnected, duplicated or incorrectly implemented features.
+
+Create an internal implementation checklist and classify findings as:
+
+1. Critical functionality failure.
+2. Backend/API failure.
+3. Database or persistence failure.
+4. Authentication or permission failure.
+5. UI interaction failure.
+6. PDF/signature failure.
+7. Payment integration failure.
+8. Security issue.
+9. Design and usability issue.
+
+Do not assume a feature works just because its interface exists.
+
+## 2. Debug the Existing Bugs First
+
+The following bugs have already been observed and must be investigated:
+
+- Evidence photographs are not appearing.
+- Digital signatures are not appearing.
+- Signature pads are missing from the expected workflows.
+- Accept Invitation button does not respond when clicked.
+- Agreement acceptance and signature records are not correctly connected.
+- Agreement PDFs do not consistently display the required signature representations.
+- Some workflow actions may not persist or update the other party's dashboard.
+- The complete demo process is not reliably executable.
+
+For every bug:
+
+1. Identify its actual root cause.
+2. Inspect the frontend event handler.
+3. Inspect the corresponding backend route.
+4. Check request validation and authentication.
+5. Check database persistence.
+6. Check file storage and retrieval if applicable.
+7. Fix the underlying cause.
+8. Test the complete workflow again.
+
+Do not solve a backend problem using a temporary frontend-only workaround.
+
+Do not replace working components unnecessarily.
+
+---
+
+# PART 2 — DESIGN AND USER EXPERIENCE
+
+## 3. Preserve Meridian's Existing Design
+
+Retain the established Meridian visual identity.
+
+Preserve:
+
+- Meridian logo.
+- Existing branding.
+- Existing dark/obsidian design language.
+- Electric-lime accent colour.
+- Existing typography.
+- Navigation and sidebar structure.
+- Dashboard layouts.
+- Existing Agreement 2 PDF design.
+- Previously implemented landing-page design.
+
+Do not redesign the entire application.
+
+However, improve usability wherever necessary.
+
+## 4. Make the Application Easier to Understand
+
+Use clear, professional, natural English.
+
+Avoid unnecessarily complicated terminology in ordinary user-facing screens.
+
+Use technical or legal terms only when they are actually needed, with a short explanation.
+
+Examples:
+
+- Instead of "Transaction Orchestration Status", use "Trade Progress".
+- Instead of "Counterparty Acceptance Pending", use "Waiting for the Other Company".
+- Instead of "Evidence Ingestion", use "Upload Supporting Evidence".
+- Instead of "Mutual Execution", use "Both Companies Have Signed".
+- Instead of "Settlement Reconciliation", use "Payment Verification".
+
+Keep the language professional, but make it understandable to someone using Meridian for the first time.
+
+## 5. Improve Navigation
+
+Both buyer and seller dashboards must have a consistent sidebar.
+
+Include:
+
+- Overview.
+- Company Profile.
+- Agreements.
+- Invitations.
+- Membership.
+- Active Trades.
+- Trade History.
+- Documents and PDFs.
+- Notifications.
+- Settings.
+
+Under Active Trades, show the actual names or products associated with the trades.
+
+When a user clicks a trade in the sidebar, open that trade's dedicated workspace.
+
+Inside each trade workspace, provide clearly organised sections:
+
+1. Trade Overview.
+2. Agreement 2.
+3. Negotiation History.
+4. Payment.
+5. Shipment.
+6. Evidence.
+7. Inspection.
+8. Disputes.
+9. Audit Records.
+10. Completion Status.
+
+Each company must only see information it is authorized to access.
+
+---
+
+# PART 3 — PHASE 2: COMPANY REGISTRATION, VERIFICATION AND AGREEMENT 1
+
+## 6. Buyer and Seller Registration
+
+Preserve the existing buyer/seller registration process.
+
+During registration, collect the required information:
+
+- Legal company name.
+- Company registration number.
+- Country and jurisdiction.
+- Registered business address.
+- Official company email.
+- Company website/domain.
+- Industry.
+- Business activity.
+- Representative's full name.
+- Designation.
+- Contact information.
+- Authority to represent the company.
+- Required supporting documents.
+
+Allow authorized users to register for their respective companies without creating duplicate company identities.
+
+Support multiple authorized company users where the existing architecture permits.
+
+Use role-based access control.
+
+## 7. Company Verification and Background Review
+
+After submission, Meridian must perform its available company verification process.
+
+The verification workflow should include:
+
+- Company registration information checks.
+- Company identity and website consistency.
+- Email verification.
+- Available official registry checks.
+- Business background research.
+- Sanctions/restricted-party screening where supported.
+- Relevant trade-risk indicators.
+- Supporting document review.
+- Authorized representative review.
+
+Use authoritative and relevant sources wherever available.
+
+For web research, display:
+
+- Finding.
+- Source.
+- Source URL.
+- Date accessed.
+- Verification status.
+- Confidence.
+- Explanation.
+- Manual review requirement, if any.
+
+Possible statuses:
+
+- VERIFIED.
+- PENDING REVIEW.
+- INFORMATION REQUIRED.
+- POTENTIAL RISK IDENTIFIED.
+- VERIFICATION FAILED.
+- MANUAL REVIEW REQUIRED.
+
+Do not claim that a web search guarantees a company's legal status or proves that it has never engaged in unlawful activity.
+
+Do not automatically reject a company based only on an AI-generated suspicion.
+
+Where important evidence is inconclusive, request additional documentation or human review.
+
+## 8. Agreement 1 — Meridian Platform Terms
+
+After the company verification process, present Agreement 1.
+
+Agreement 1 is Meridian's platform terms and conditions.
+
+It must be separate from the commercial trade agreement.
+
+The user must:
+
+1. Open Agreement 1.
+2. Review the complete document.
+3. Scroll through or open the full document.
+4. Read the acceptance declaration.
+5. Digitally sign using the signature interface.
+6. Confirm the acceptance checkbox.
+7. Submit the signed acceptance.
+
+Do not allow the user to accept Agreement 1 without completing the required signing interaction.
+
+## 9. Agreement 1 Digital Signature Interface
+
+This is mandatory.
+
+When the user reaches the signature stage, display a small, clean signing tab or modal.
+
+Title:
+
+**SIGN AGREEMENT 1**
+
+Include:
+
+- A blank signature canvas.
+- Mouse and touch support.
+- Draw-your-signature functionality.
+- Clear button.
+- Undo button.
+- Preview.
+- Typed representative name fallback.
+- Representative designation.
+- Consent checkbox.
+- Submit and Accept button.
+
+The signature must be supplied by the actual user using their cursor, mouse or touchscreen.
+
+For the hackathon demonstration, allow the user to draw a signature personally.
+
+Do not use a hardcoded signature image or automatically generate a signature for the user.
+
+## 10. Signature Watermark and Agreement 1 PDF
+
+After the user signs:
+
+- Save the actual signature representation.
+- Preserve the signature image or vector data.
+- Record the authenticated user.
+- Record the company.
+- Record the representative designation.
+- Record the agreement version.
+- Record the acceptance timestamp.
+- Record the signing method.
+- Record the acceptance declaration.
+
+Generate a signed Agreement 1 PDF.
+
+The PDF must contain:
+
+- Meridian branding.
+- Original Agreement 1 content.
+- Company legal details.
+- Representative information.
+- Actual signature representation.
+- Signature watermark or signed indicator.
+- Acceptance timestamp.
+- Agreement version.
+- Document ID.
+- Relevant integrity hash.
+
+The watermark should clearly indicate:
+
+**ELECTRONICALLY ACCEPTED BY [COMPANY NAME]**
+
+Do not describe a prototype canvas signature as a government-certified digital signature.
+
+## 11. Save Agreement 1 to the Company Profile
+
+After successful acceptance:
+
+- Save the signed Agreement 1 PDF in persistent storage.
+- Add it to the company's Documents section.
+- Display it in the profile.
+- Allow authorized users to open and download it.
+- Preserve its version and acceptance history.
+- Do not require the company to sign it again on every login.
+
+A user must be able to access their signed Agreement 1 later.
+
+If the platform terms are materially updated, implement a separate versioned re-acceptance process.
+
+Only after the required registration, verification and Agreement 1 acceptance steps are complete should the company enter the main dashboard.
+
+---
+
+# PART 4 — INVITATIONS AND BUYER/SELLER CONNECTION
+
+## 12. Invitation System
+
+Both buyers and sellers should be able to initiate a trade invitation to a known business partner.
+
+Meridian is not a company-matching marketplace.
+
+Companies already know the business they want to trade with.
+
+Allow users to:
+
+- Enter the intended partner's company email.
+- Select the partner company where already registered.
+- Provide a short invitation message.
+- Specify the proposed trade name or product.
+- Send a secure invitation.
+
+For the demonstration, keep the number of invitations limited to approximately two or three per demo company.
+
+Do not create unnecessary sample invitations.
+
+## 13. Received Invitations
+
+Display incoming invitations clearly in the recipient's dashboard.
+
+Each invitation should contain:
+
+- Sender company.
+- Sender representative.
+- Proposed trade.
+- Product or service.
+- Invitation date.
+- Invitation status.
+- Secure invitation reference.
+
+Provide functional buttons:
+
+- ACCEPT INVITATION.
+- DECLINE.
+- VIEW DETAILS.
+
+### Critical bug: Accept Invitation button
+
+The existing Accept Invitation button does not respond.
+
+Investigate and fix this properly.
+
+Check:
+
+- Whether the button has an actual click handler.
+- Whether the correct invitation ID is passed.
+- Whether the authenticated user has permission.
+- Whether the invitation token is valid.
+- Whether the backend route exists.
+- Whether the API request succeeds.
+- Whether the database status is updated.
+- Whether the sender's dashboard receives the update.
+- Whether the frontend refreshes the invitation state.
+- Whether duplicate acceptance is prevented.
+
+After acceptance:
+
+1. Mark the invitation ACCEPTED in the backend.
+2. Connect the two companies to the same trade.
+3. Create the trade workspace.
+4. Notify the sender.
+5. Notify the recipient.
+6. Display the trade in both companies' dashboards.
+7. Allow the Phase 3 process to begin.
+
+If declined, record the result and notify the sender.
+
+Do not display an invitation as accepted until the backend confirms it.
+
+## 14. Invitation Emails
+
+Reuse the existing Resend integration.
+
+Send secure invitation emails to the intended recipient.
+
+Include:
+
+- Sender company.
+- Invitation details.
+- Trade reference.
+- Secure invitation link.
+- Expiry information, where configured.
+
+Do not expose sensitive internal records through public invitation URLs.
+
+---
+
+# PART 5 — PHASE 3: MEMBERSHIP, AGREEMENT 2 AND NEGOTIATION
+
+## 15. Membership Before Trade Creation
+
+Preserve the existing membership workflow.
+
+Show the Regular, Pro and Ultra plans already designed for Meridian.
+
+Apply the existing deal limits and plan configuration.
+
+Ensure:
+
+- Membership status persists.
+- Deal usage is tracked.
+- Users cannot exceed their plan limits without an appropriate upgrade.
+- Subscription status is visible.
+- Demo membership records are clearly identified as demo data.
+
+Do not silently change the previously agreed pricing or membership structure.
+
+## 16. Trade Creation and Initial Information
+
+After invitation acceptance, both companies enter the same trade workspace.
+
+The initiating company provides:
+
+- Product or goods.
+- Quantity.
+- Specifications.
+- Price.
+- Currency.
+- Proposed payment terms.
+- Proposed shipment conditions.
+- Origin.
+- Destination.
+- Expected delivery.
+- Inspection requirements.
+- Other commercial conditions.
+
+The other company must be able to review and submit its own proposed conditions.
+
+## 17. Document and Clause Upload
+
+Allow both companies to:
+
+- Upload existing trade agreements.
+- Upload commercial documents.
+- Submit individual clauses.
+- Enter proposed commercial conditions.
+- Provide supporting documentation.
+
+Preserve original uploaded documents.
+
+Do not overwrite or silently alter source documents.
+
+Extract relevant terms and organise them into structured fields.
+
+## 18. AI Trade Agreement Analysis
+
+The AI system must compare both parties' proposed terms.
+
+Analyse:
+
+- Parties.
+- Product.
+- Quantity.
+- Quality specifications.
+- Price.
+- Currency.
+- Payment milestones.
+- Payment method.
+- Shipment.
+- Delivery.
+- Incoterms.
+- Risk and title transfer.
+- Insurance.
+- Inspection.
+- Packaging.
+- Telemetry.
+- Evidence requirements.
+- Non-conformance.
+- Refund conditions.
+- Dispute handling.
+- Governing law.
+- Jurisdiction.
+- Termination.
+- Liability.
+- Force majeure.
+- Confidentiality.
+- Other important commercial terms.
+
+For every clause, identify:
+
+- Matched terms.
+- Conflicting terms.
+- Missing terms.
+- Ambiguous terms.
+- Technical validation required.
+- Legal review required.
+
+Never silently choose one party's version.
+
+## 19. AI-Suggested Improvements
+
+Where appropriate, the AI may suggest improvements to unclear or conflicting clauses.
+
+Display:
+
+- Original buyer wording.
+- Original seller wording.
+- Identified issue.
+- Suggested combined wording.
+- Reason for suggestion.
+- Commercial implications.
+- Relevant source or explanation.
+- Legal review flag, where necessary.
+
+Clearly label suggestions as AI-generated proposals, not legal advice.
+
+## 20. Mutual Negotiation
+
+Both parties must independently review the suggestions.
+
+For every suggestion, provide:
+
+- ACCEPT.
+- REJECT.
+- REQUEST CHANGE.
+- SUBMIT ALTERNATIVE.
+
+If both parties accept the same proposal, it may be incorporated.
+
+If either party rejects it, do not incorporate it as mutually agreed.
+
+If an alternative is proposed, send it to the other party for approval.
+
+Record every negotiation round.
+
+Preserve the original wording and all previous decisions.
+
+Do not treat silence as consent.
+
+## 21. Agreement 2 — Final Commercial Trade Agreement
+
+After all required conditions are resolved, generate Agreement 2.
+
+Agreement 2 must retain the existing approved Meridian legal-document design.
+
+Do not invent a new design.
+
+Preserve:
+
+- Existing Meridian branding.
+- Established agreement cover page.
+- Typography.
+- Page structure.
+- Clause numbering.
+- Professional legal-document styling.
+- Headers and footers.
+- Page numbering.
+- Signature sections.
+- Four-schedule structure.
+
+Use:
+
+- Schedule A — Commercial and Payment Terms.
+- Schedule B — Logistics and Incoterms.
+- Schedule C — Quality, Inspection and Risk Allocation.
+- Schedule D — Dispute Resolution and Governing Law.
+
+The agreement must contain the actual mutually approved trade terms.
+
+Do not add terms that neither party approved.
+
+## 22. Agreement 2 Signing Interface
+
+This is mandatory and must work just like Agreement 1.
+
+When the final agreement is ready, display:
+
+**REVIEW AND SIGN AGREEMENT 2**
+
+Both buyer and seller must independently review the final agreement.
+
+Provide a small signature tab or modal containing:
+
+- Actual signature canvas.
+- Mouse and touch support.
+- Clear.
+- Undo.
+- Preview.
+- Typed representative name fallback.
+- Designation.
+- Company.
+- Consent declaration.
+- Submit Signature button.
+
+The user must personally draw their signature using their cursor or touchscreen in the demo.
+
+Do not insert a hardcoded signature.
+
+## 23. Signature Watermark in Agreement 2 PDF
+
+After both parties sign:
+
+- Store each actual signature.
+- Bind each signature to the exact Agreement 2 version.
+- Record signatory identity.
+- Record company.
+- Record designation.
+- Record timestamp.
+- Record signature method.
+- Record the agreement hash.
+- Preserve the signature approval history.
+
+The final Agreement 2 PDF must visibly display both actual signature representations.
+
+Include appropriate signed indicators and timestamps.
+
+Example:
+
+**BUYER — ELECTRONICALLY SIGNED**
+
+Actual signature image.
+
+Representative name and designation.
+
+Signing timestamp.
+
+**SELLER — ELECTRONICALLY SIGNED**
+
+Actual signature image.
+
+Representative name and designation.
+
+Signing timestamp.
+
+Clearly label the demo signing method as a prototype electronic-signature interaction where appropriate.
+
+Do not mark Agreement 2 EXECUTED until all required parties have signed the same final version.
+
+## 24. Changes After Signing
+
+If either party requests a material change after one party has signed:
+
+- Create a new agreement version.
+- Preserve the old version.
+- Mark affected old approvals as superseded.
+- Require both parties to review the new version.
+- Obtain new signatures.
+- Preserve the complete version history.
+
+Do not silently replace an already signed document.
+
+## 25. Save Agreement 2 in the Trade Workspace
+
+Once mutually signed:
+
+- Save the actual Agreement 2 PDF in persistent private storage.
+- Add it to both companies' trade workspaces.
+- Display it under the trade name in the sidebar.
+- Provide Open PDF and Download PDF options.
+- Preserve agreement versions.
+- Preserve both signatures.
+- Preserve the final hash.
+- Notify both companies.
+
+The buyer and seller must receive the same final agreement.
+
+---
+
+# PART 6 — PHASE 4: PAYPAL SANDBOX AND PAYMENT WORKFLOW
+
+## 26. PayPal Sandbox Must Be Clearly Integrated
+
+This is one of the most important parts of the demonstration.
+
+The PayPal integration must be visible and functional.
+
+Do not merely display a PayPal logo or a mock payment screen.
+
+Use the actual configured PayPal Sandbox integration.
+
+Display:
+
+**PAYPAL SANDBOX — VIRTUAL PAYMENT DEMONSTRATION**
+
+Clearly state that the transaction is performed in a test environment and does not transfer real money.
+
+## 27. Buyer Initiates the Virtual Payment
+
+After Agreement 2 is executed, the buyer receives a payment notification.
+
+Display:
+
+"Your trade agreement has been signed. Please complete the virtual payment through PayPal Sandbox to continue the demonstration."
+
+Show:
+
+- Trade ID.
+- Agreement 2 reference.
+- Buyer company.
+- Seller company.
+- Agreed amount.
+- Agreed currency.
+- Payment milestone.
+- Payment status.
+- PayPal Sandbox indicator.
+
+The amount must come from the final signed Agreement 2.
+
+Do not use an unrelated hardcoded amount.
+
+## 28. Currency Conversion
+
+Support the agreed trade currency and the supported PayPal Sandbox payment currency.
+
+If conversion is required:
+
+- Retrieve an exchange rate from a configured reliable source.
+- Display the original amount and currency.
+- Display the converted amount and currency.
+- Display the exchange-rate source.
+- Display the rate timestamp.
+- Clearly state that the provider's final checkout amount may differ due to its own conversion rules or fees.
+
+Do not invent exchange rates.
+
+Do not silently change the original contractual price or currency.
+
+If the required currency is unsupported, show an understandable error and require an approved payment arrangement.
+
+## 29. PayPal Checkout Integration
+
+Implement the supported PayPal Orders API flow.
+
+Use server-side order creation and the actual configured Sandbox credentials.
+
+The workflow must:
+
+1. Validate the trade and signed agreement.
+2. Retrieve the agreed amount.
+3. Create the Sandbox order.
+4. Save the order ID.
+5. Return the approval URL.
+6. Redirect the buyer to the actual PayPal Sandbox approval page.
+7. Allow the buyer to log in using the designated Sandbox test buyer account.
+8. Allow the buyer to approve the virtual payment.
+9. Return the buyer to Meridian.
+10. Verify the resulting payment status server-side.
+11. Capture or authorize according to the selected and supported payment design.
+12. Save the actual provider response and reference IDs.
+13. Update the trade payment status.
+
+Use actual PayPal Sandbox responses.
+
+Do not fake a successful redirect or payment confirmation.
+
+### Important PayPal limitation
+
+Do not describe PayPal Sandbox authorization as escrow or claim that funds are locked in a legally protected conditional holding account.
+
+Authorization, capture and other PayPal operations must be described according to their actual API behaviour.
+
+For the hackathon, demonstrate the supported virtual transaction and its recorded status.
+
+If an authorization is used, check its actual validity and capture requirements.
+
+Do not claim that the platform can automatically split, hold or release funds through an API capability that has not been implemented and verified.
+
+## 30. PayPal Webhooks
+
+Use the actual configured HTTPS backend webhook endpoint.
+
+The endpoint must:
+
+- Receive the selected PayPal Sandbox events.
+- Verify webhook signatures using PayPal's supported verification mechanism.
+- Match events to the correct trade and order.
+- Prevent duplicate event processing.
+- Save event IDs and timestamps.
+- Update payment records only after successful verification.
+- Handle retries safely.
+
+Do not mark payments successful from frontend redirect parameters alone.
+
+Display useful payment statuses:
+
+- PAYMENT_PENDING.
+- BUYER_APPROVAL_REQUIRED.
+- AUTHORIZED.
+- CAPTURE_PENDING.
+- CAPTURED.
+- PAYMENT_FAILED.
+- AUTHORIZATION_EXPIRED.
+- PAYMENT_CANCELLED.
+- REFUND_PENDING.
+- REFUNDED.
+
+Only use statuses supported by the actual payment operation.
+
+## 31. Payment History
+
+Both companies must see:
+
+- PayPal Sandbox order reference.
+- Payment amount.
+- Currency.
+- Conversion details, if applicable.
+- Order creation timestamp.
+- Buyer approval timestamp.
+- Authorization reference, if applicable.
+- Capture reference, if applicable.
+- Provider status.
+- Webhook verification status.
+- Payment history.
+
+The payment section must clearly show:
+
+**SANDBOX TEST TRANSACTION — NO REAL MONEY TRANSFERRED.**
+
+---
+
+# PART 7 — PHASE 4: SHIPMENT AND TELEMETRY
+
+## 32. Shipment Workflow
+
+After the required payment step has been completed, allow the seller to proceed with shipment preparation.
+
+Display:
+
+- Product.
+- Quantity.
+- Agreed shipment date.
+- Origin.
+- Destination.
+- Carrier.
+- Tracking information.
+- Packaging status.
+- Dispatch status.
+- Expected delivery.
+- Actual delivery.
+
+The seller must be able to submit shipment details and supporting records.
+
+The buyer must be able to view the shipment progress.
+
+## 33. IoT Telemetry Simulator
+
+Preserve the existing telemetry simulator.
+
+It must support a complete demonstration without requiring actual physical IoT hardware.
+
+Allow authorized demo users to trigger predefined events such as:
+
+- Normal temperature.
+- Temperature spike.
+- Temperature returning to normal.
+- Humidity anomaly.
+- Delivery delay.
+- Location deviation.
+- Successful delivery.
+
+Use realistic timestamps and a clear event history.
+
+Clearly label:
+
+**SIMULATED DEMO TELEMETRY — NOT LIVE PHYSICAL SENSOR DATA.**
+
+The backend must persist the telemetry events.
+
+Do not allow users to change arbitrary trade records simply by editing the frontend.
+
+## 34. AI Sentinel
+
+The AI Sentinel should analyse:
+
+- Contractual temperature limits.
+- Recorded telemetry.
+- Delivery milestones.
+- Shipment deviations.
+- Evidence submitted.
+- Relevant contract clauses.
+
+Display:
+
+- Detected event.
+- Relevant threshold.
+- Actual or simulated reading.
+- Time of event.
+- Severity.
+- Supporting evidence.
+- Relevant contractual condition.
+- Recommended next action.
+
+Possible statuses:
+
+- NORMAL.
+- WARNING.
+- POTENTIAL BREACH.
+- REQUIRES INSPECTION.
+- DISPUTE REVIEW REQUIRED.
+
+AI Sentinel may flag discrepancies and recommend action.
+
+It must not independently decide that a party is legally liable.
+
+---
+
+# PART 8 — EVIDENCE PHOTOGRAPHS AND DOCUMENT VERIFICATION
+
+## 35. Evidence Upload Must Actually Work
+
+This is a critical bug reported in the current application.
+
+Implement and test actual photograph uploads.
+
+Provide upload interfaces for:
+
+### Seller
+
+- Product photographs.
+- Packaging photographs.
+- Pre-dispatch photographs.
+- Shipment photographs.
+- Dispatch documents.
+- Relevant inspection records.
+
+### Buyer
+
+- Delivery photographs.
+- Product inspection photographs.
+- Damaged or non-conforming product evidence.
+- Received quantity records.
+- Additional supporting documents.
+
+Allow JPG, JPEG, PNG, WebP and appropriate PDF documents.
+
+Validate file types and file sizes.
+
+Show image previews before submission.
+
+Provide:
+
+- Upload.
+- Preview.
+- Remove before submission.
+- Submit evidence.
+- Upload progress.
+- Success or error message.
+
+## 36. Persistent Evidence Storage
+
+Use the existing persistent private storage service.
+
+Do not depend on temporary server filesystem storage.
+
+Do not store large image payloads directly in a JSON database.
+
+Store actual files in private object storage and save their references and metadata in the database.
+
+For each evidence item preserve:
+
+- Evidence ID.
+- Trade ID.
+- Uploader company.
+- Uploader user.
+- Original filename.
+- File type.
+- Upload timestamp.
+- Evidence category.
+- Storage reference.
+- SHA-256 hash.
+- Verification status.
+
+## 37. Evidence Gallery
+
+Both parties must be able to see the evidence they are authorized to access.
+
+Show actual uploaded images.
+
+Do not display empty placeholders where uploaded photographs exist.
+
+When a user clicks a photograph:
+
+- Open a larger preview.
+- Display evidence metadata.
+- Display uploader.
+- Display upload timestamp.
+- Display verification status.
+- Allow authorized downloads.
+
+The same actual images must later appear in the final audit dossier.
+
+## 38. AI Evidence Analysis
+
+Meridian should analyse available evidence against the signed Agreement 2.
+
+Where appropriate, check:
+
+- Product appearance.
+- Packaging condition.
+- Quantity records.
+- Relevant shipment documents.
+- Inspection observations.
+- Contractual specifications.
+- Telemetry history.
+- Consistency between different evidence records.
+
+Show:
+
+- Evidence reviewed.
+- Relevant contract requirement.
+- Potential discrepancy.
+- AI explanation.
+- Confidence.
+- Missing information.
+- Recommended manual inspection.
+
+Do not claim that image analysis proves the true physical condition of goods or guarantees authenticity.
+
+Do not fabricate image analysis results.
+
+Where an image is unreadable, insufficient or ambiguous, ask for better evidence or human review.
+
+## 39. Document Integrity
+
+Continue using the simplified integrity architecture.
+
+- SHA-256 for document and photograph hashing.
+- HMAC-SHA256 for authenticated simulated telemetry messages.
+- Backend-side verification.
+- Protected audit records.
+
+Do not require:
+
+MERIDIAN_SIGNING_PRIVATE_KEY
+
+MERIDIAN_SIGNING_PUBLIC_KEY
+
+for the simplified prototype implementation.
+
+Do not describe SHA-256 hashes as certified digital signatures.
+
+---
+
+# PART 9 — BUYER INSPECTION AND ACCEPTANCE
+
+## 40. Buyer Evidence Review
+
+Once the seller has submitted the required shipment and evidence records, notify the buyer.
+
+Display:
+
+"Your shipment evidence is ready for review."
+
+The buyer should be able to:
+
+- View photographs.
+- View supporting documents.
+- Review shipment records.
+- Review telemetry.
+- Review AI Sentinel findings.
+- Submit inspection observations.
+- Accept the evidence.
+- Reject the evidence.
+- Request additional evidence.
+
+Record every decision.
+
+## 41. Meridian's Automated Review
+
+Meridian must also perform its configured checks.
+
+Compare the available evidence against:
+
+- Agreement 2.
+- Product specifications.
+- Quantity.
+- Packaging requirements.
+- Delivery conditions.
+- Inspection requirements.
+- Telemetry thresholds.
+- Shipment records.
+
+Display an understandable report:
+
+- REQUIREMENTS SATISFIED.
+- POTENTIAL DISCREPANCY.
+- EVIDENCE MISSING.
+- MANUAL REVIEW REQUIRED.
+- TECHNICAL VALIDATION REQUIRED.
+
+Do not automatically mark the entire trade successful just because an AI model returns a positive result.
+
+The buyer's independent inspection and the applicable agreement conditions must also be considered.
+
+## 42. Rejection and Correction
+
+If the buyer rejects the evidence:
+
+1. Record the reason.
+2. Link it to the relevant Agreement 2 condition.
+3. Notify the seller.
+4. Allow the seller to respond.
+5. Allow additional photographs and documents.
+6. Re-run relevant verification.
+7. Preserve the original rejected evidence and history.
+8. Record the new decision.
+
+Do not delete or silently replace previously submitted evidence.
+
+---
+
+# PART 10 — DISPUTE MANAGEMENT
+
+## 43. Internal Meridian Dispute Workflow
+
+The complete dispute-solving workflow must be functional.
+
+If the buyer rejects the shipment evidence or AI Sentinel identifies a material discrepancy:
+
+- Create an internal Meridian dispute case.
+- Generate a unique dispute ID.
+- Link it to the correct trade.
+- Record the triggering event.
+- Record the relevant Agreement 2 clause.
+- Attach relevant evidence references.
+- Notify both companies.
+
+## 44. Buyer and Seller Dispute Interfaces
+
+The buyer must be able to:
+
+- Explain the issue.
+- Upload supporting evidence.
+- Refer to relevant contract terms.
+- Submit a proposed resolution.
+
+The seller must be able to:
+
+- Review the complaint.
+- Submit an explanation.
+- Upload additional evidence.
+- Accept the proposed resolution.
+- Reject it.
+- Submit an alternative.
+
+Both parties must see the dispute history and its current status.
+
+## 45. AI Dispute Assistance
+
+AI may:
+
+- Summarise the complaint.
+- Compare the complaint against Agreement 2.
+- Organise supporting evidence.
+- Identify missing information.
+- Identify conflicting records.
+- Suggest possible resolution options.
+- Draft a proposed resolution for both parties.
+
+AI must not independently impose financial penalties, declare legal liability or automatically deduct money.
+
+## 46. Contractual Warnings and Possible Consequences
+
+Where Agreement 2 contains relevant non-performance, delay, penalty, compensation or remedy clauses, Meridian may display an explanatory warning.
+
+For example:
+
+"Potential contractual non-compliance identified. Please review the applicable Agreement 2 clause and respond before the stated deadline."
+
+Display:
+
+- Relevant clause.
+- Identified issue.
+- Response deadline.
+- Possible contractual remedy, if expressly provided in the signed agreement.
+- Supporting evidence.
+- Review status.
+
+Any actual charge, penalty, compensation or deduction must follow the agreed contract and applicable legal requirements.
+
+Do not invent penalties or automatically charge a seller based on an AI prediction.
+
+## 47. Mutual Dispute Resolution
+
+The dispute must remain open until the required review and approval conditions are satisfied.
+
+Possible outcomes:
+
+- RESOLVED — BUYER ACCEPTED.
+- RESOLVED — MUTUAL AGREEMENT.
+- ADDITIONAL EVIDENCE REQUIRED.
+- UNDER MANUAL REVIEW.
+- ESCALATED.
+- UNRESOLVED.
+
+If both parties agree to a resolution:
+
+- Record each party's approval.
+- Record the resolution version.
+- Record the timestamp.
+- Preserve supporting documents.
+- Update the trade workflow.
+
+If they disagree, preserve the unresolved status and the available escalation process.
+
+Do not falsely declare a dispute resolved.
+
+---
+
+# PART 11 — ACTUAL PAYMENT AFTER THE SANDBOX DEMONSTRATION
+
+## 48. Separate Sandbox Payments From Real Commercial Payments
+
+This distinction must be visible throughout Meridian.
+
+There are two separate concepts:
+
+**A. PayPal Sandbox**
+
+Used for the hackathon demonstration.
+
+- Virtual transactions only.
+- Test accounts.
+- No real money.
+- Actual Sandbox API integration.
+- Actual Sandbox order references.
+- Actual Sandbox webhook records.
+
+**B. Real Commercial Payments**
+
+Used only if Meridian is separately configured for real transactions in an appropriate production environment.
+
+Do not present Sandbox transactions as real payments.
+
+Do not automatically assume that completing a Sandbox payment satisfies a real commercial payment obligation.
+
+## 49. Real Payment Options
+
+For the future production architecture, provide a separate real-payment section.
+
+It may support payment methods such as:
+
+- A properly configured payment provider.
+- Supported bank transfer arrangements.
+- UPI through an authorized provider, where available.
+- Other payment methods supported in the relevant country and jurisdiction.
+
+Do not label PayPal as a UPI or direct bank-transfer service unless the specific supported integration actually provides that functionality.
+
+Do not display a payment option that is not configured.
+
+For the hackathon, keep live money movement disabled unless a separately approved and properly configured production payment integration exists.
+
+## 50. Payment Evidence and Verification
+
+If a company uploads a payment receipt or bank-transfer confirmation:
+
+- Save the document.
+- Record the uploader.
+- Record the timestamp.
+- Record the claimed amount.
+- Record the transaction reference, where supplied.
+- Mark the status PAYMENT PROOF SUBMITTED.
+- Do not automatically mark it PAYMENT RECEIVED.
+
+A screenshot or uploaded receipt is supporting evidence, not independent proof of cleared funds.
+
+A payment should be marked received only after verification through a supported provider response or an authorized reconciliation process.
+
+For a manual bank-transfer workflow, use:
+
+- PENDING VERIFICATION.
+- VERIFIED BY AUTHORIZED REVIEWER.
+- REJECTED / INSUFFICIENT EVIDENCE.
+
+Preserve the verification record.
+
+Do not store unnecessary banking credentials or sensitive account details.
+
+## 51. Real Payment Completion Gate
+
+The trade must not advance to final completion merely because someone uploads a payment screenshot.
+
+The backend must check the actual required payment status against Agreement 2.
+
+Only when the applicable payment conditions are verified should the trade become eligible for Phase 5.
+
+Keep Sandbox and real-payment statuses separate.
+
+---
+
+# PART 12 — PHASE 5 HANDOFF
+
+## 52. Prepare the Final Phase 5 Handoff
+
+Do not rebuild Phase 5 as part of this repair unless the existing application already contains its functionality.
+
+Preserve the existing Phase 5 architecture or prepare the necessary integration points.
+
+Phase 5 will later handle:
+
+- Final trade completion review.
+- Buyer completion acknowledgement.
+- Seller completion acknowledgement.
+- Separate final completion signatures.
+- Original executed Agreement 2 preservation.
+- Final Trade Completion Dossier PDF.
+- Complete execution and dispute history.
+- Final payment verification.
+- Final company trade histories.
+- Official closure status.
+
+The original Agreement 2 signatures must remain separate from Phase 5 completion signatures.
+
+The final Agreement 2 PDF generated in Phase 3 must remain available throughout the trade lifecycle.
+
+At the end of Phase 4, create a structured handoff containing:
+
+- Trade ID.
+- Buyer and seller.
+- Original Agreement 2 ID and version.
+- Original Agreement 2 PDF reference.
+- Original buyer and seller signatures.
+- Payment history.
+- Shipment history.
+- Evidence references.
+- Telemetry history.
+- Inspection outcome.
+- Dispute history.
+- Mutual dispute resolution, if applicable.
+- Actual payment verification status.
+- Phase 4 audit dossier.
+- Outstanding conditions.
+
+Do not mark a trade completed merely because Phase 4 has finished.
+
+---
+
+# PART 13 — DEMONSTRATION MODE
+
+## 53. A Complete, Repeatable Meridian Demo
+
+This is a critical requirement.
+
+The entire application must be demonstrable by the user and judges without requiring real companies, real shipments, real IoT devices or real-money transfers.
+
+Provide designated demo accounts:
+
+- Demo Buyer Company.
+- Demo Seller Company.
+
+Use synthetic company identities and clearly label all demo data.
+
+Provide easy demo login access where the existing authentication architecture supports it.
+
+Never expose administrator credentials publicly.
+
+The demo must be repeatable.
+
+## 54. Full Demo Journey
+
+The following flow must be executable from start to finish:
+
+**STEP 1 — DEMO LOGIN**
+
+- Log in as Demo Buyer.
+- Log in as Demo Seller.
+- Show their separate dashboards.
+
+**STEP 2 — COMPANY PROFILE**
+
+- View demo company details.
+- Complete or review the company verification demonstration.
+- Display the verification report and source records where available.
+
+**STEP 3 — AGREEMENT 1**
+
+- Open Agreement 1.
+- Draw a signature using the mouse or cursor.
+- Accept the agreement.
+- Generate the signed Agreement 1 PDF.
+- Show the actual signature in the PDF.
+- Save it in the company profile.
+
+**STEP 4 — INVITATION**
+
+- Demo Buyer sends an invitation to Demo Seller, or vice versa.
+- Open the other company's account.
+- Display the invitation.
+- Click Accept Invitation.
+- Verify that the invitation is actually accepted.
+- Show the same trade in both dashboards.
+
+**STEP 5 — MEMBERSHIP**
+
+- Display the relevant demo membership.
+- Check deal limits.
+
+**STEP 6 — AGREEMENT 2**
+
+- Both companies submit their terms.
+- Upload documents or enter clauses.
+- Run AI comparison.
+- Display conflicts and missing information.
+- Review AI suggestions.
+- Accept, reject or propose alternatives.
+- Finalise the mutually approved terms.
+
+**STEP 7 — AGREEMENT 2 SIGNING**
+
+- Demo Buyer draws a signature.
+- Demo Seller draws a separate signature.
+- Generate the final Agreement 2 PDF.
+- Display both actual signatures.
+- Save the same PDF in both trade workspaces.
+
+**STEP 8 — PAYPAL SANDBOX**
+
+- Show the agreed payment amount.
+- Display PAYPAL SANDBOX.
+- Create an actual Sandbox order.
+- Redirect the buyer to PayPal Sandbox.
+- Complete the test approval.
+- Return to Meridian.
+- Verify the actual order status.
+- Show the recorded transaction references.
+
+**STEP 9 — SHIPMENT**
+
+- Demo Seller prepares shipment.
+- Add dispatch and tracking details.
+- Trigger the simulated telemetry.
+- Show the shipment timeline.
+
+**STEP 10 — EVIDENCE**
+
+- Upload actual demo photographs.
+- Display image previews.
+- Save them in persistent storage.
+- Calculate SHA-256 hashes.
+- Display the actual photographs in both authorized dashboards.
+
+**STEP 11 — AI VERIFICATION**
+
+- Analyse the uploaded evidence.
+- Compare it against the agreement.
+- Display verification findings.
+- Show potential discrepancies and explanations.
+
+**STEP 12 — BUYER INSPECTION**
+
+- Demo Buyer reviews the evidence.
+- Accept or reject the inspection.
+- Record the result.
+
+**STEP 13 — DISPUTE DEMONSTRATION**
+
+- Allow a predefined anomaly scenario.
+- Create a dispute.
+- Display the buyer's response.
+- Display the seller's response.
+- Upload supporting evidence.
+- Present the AI-assisted proposed resolution.
+- Allow both parties to accept or reject.
+- Preserve the actual decision history.
+
+**STEP 14 — PAYMENT VERIFICATION**
+
+- Display the actual Sandbox payment status.
+- Demonstrate the separate real-payment verification workflow using clearly labelled simulated proof if needed.
+- Never claim that simulated proof is an actual real payment.
+
+**STEP 15 — PHASE 5 HANDOFF**
+
+- Display that the trade has passed or failed the Phase 4 readiness conditions.
+- Show the available execution records.
+- Preserve the complete trade history for the future Phase 5 completion process.
+
+The demonstration must not require the user to manually edit a database, run SQL commands or change code between ordinary demo steps.
+
+---
+
+# PART 14 — DEMO RESET AND DATA MANAGEMENT
+
+## 55. Reset Only After a Complete Demo Run
+
+The demo must be repeatable.
+
+However, do not reset the demo immediately after a buyer or seller logs out.
+
+Do not reset when a payment is pending, a dispute is unresolved or a workflow is incomplete.
+
+Reset must occur only after the entire demo run reaches its configured terminal state or an authorized administrator explicitly requests a reset.
+
+Provide:
+
+**RESET DEMO FOR NEXT PRESENTATION**
+
+Before resetting:
+
+1. Confirm that the current demo run is complete.
+2. Preserve an archived copy of its final demo records.
+3. Preserve the demo run ID and completion summary.
+4. Reset only the synthetic demo workflow data.
+5. Recreate the designated demo buyer and seller state.
+6. Reinitialise the invitation and trade workflow.
+7. Keep the same demo account access.
+8. Make the next demo run possible.
+
+Never delete:
+
+- Real company accounts.
+- Real user accounts.
+- Real trade records.
+- Production documents.
+- Production signatures.
+- Production payment records.
+- Shared application configuration.
+- API credentials.
+- Permanent audit records.
+
+Never attempt to reverse or refund an external PayPal transaction as part of a demo reset.
+
+Use a separate demo namespace or clearly isolated demo data.
+
+Provide an administrator-controlled reset action and an appropriate confirmation step.
+
+---
+
+# PART 15 — API AND BACKEND SECURITY
+
+## 56. Existing API Integrations
+
+Inspect and reuse the existing integrations.
+
+Relevant services include:
+
+- PayPal Sandbox.
+- Resend.
+- Configured web search provider.
+- Persistent database.
+- Persistent private file storage.
+- Existing authentication.
+- Existing document generation.
+- Existing webhook endpoint.
+- Existing hashing and telemetry verification.
+
+Do not create duplicate provider integrations if the current application already has them.
+
+Do not invent API responses or pretend an integration succeeded when it did not.
+
+## 57. Secret Management
+
+All sensitive credentials must remain server-side.
+
+Use the existing Google AI Studio Secrets / environment variable configuration or the actual deployment environment's secret-management mechanism.
+
+Examples:
+
+- PAYPAL_CLIENT_ID.
+- PAYPAL_CLIENT_SECRET.
+- PAYPAL_WEBHOOK_ID.
+- RESEND_API_KEY.
+- TAVILY_API_KEY, if configured.
+- SUPABASE_URL, if used.
+- SUPABASE_PUBLISHABLE_KEY, if used.
+- SUPABASE_SECRET_KEY, if used.
+
+Do not expose secret keys in:
+
+- Frontend code.
+- Browser JavaScript.
+- Public API responses.
+- GitHub.
+- Public configuration files.
+- Logs.
+- Demo screenshots.
+
+Use the actual configured variable names in the existing project.
+
+Do not require the optional Meridian asymmetric signing keys for the simplified SHA-256 implementation.
+
+## 58. Database and Storage
+
+Use the existing persistent database and private object storage.
+
+Do not rely on temporary Cloud Run local filesystem storage or a local JSON file as the permanent database.
+
+Persist:
+
+- Companies.
+- Users.
+- Invitations.
+- Memberships.
+- Agreements.
+- Signature records.
+- Negotiation history.
+- Payments.
+- Webhook events.
+- Shipments.
+- Telemetry.
+- Evidence metadata.
+- Actual uploaded files.
+- Inspection records.
+- Disputes.
+- Resolutions.
+- Audit records.
+- Demo runs.
+
+Store actual photographs and PDFs in private persistent object storage.
+
+Store references and metadata in the database.
+
+Use authenticated access and trade-level permissions for all document retrieval.
+
+## 59. Webhook and API Reliability
+
+Check:
+
+- HTTPS endpoint availability.
+- PayPal webhook verification.
+- Event deduplication.
+- Correct trade mapping.
+- Correct order mapping.
+- Retry handling.
+- API error responses.
+- Rate limits.
+- Timeout handling.
+- Authentication.
+- Authorization.
+- Database transaction safety.
+
+Do not mark a workflow step successful before the backend confirms it.
+
+---
+
+# PART 16 — FUNCTIONAL TESTING AND BUG VERIFICATION
+
+## 60. Test Every Important Button
+
+Inspect every button, including:
+
+- Register.
+- Login.
+- Verify email.
+- Submit company details.
+- Accept Agreement 1.
+- Clear signature.
+- Undo signature.
+- Submit signature.
+- Download Agreement 1 PDF.
+- Send invitation.
+- Accept invitation.
+- Decline invitation.
+- Open trade.
+- Upload documents.
+- Submit clauses.
+- Compare clauses.
+- Accept suggestion.
+- Reject suggestion.
+- Submit alternative.
+- Generate Agreement 2.
+- Sign Agreement 2.
+- Download Agreement 2.
+- Create PayPal order.
+- Redirect to PayPal.
+- Return from PayPal.
+- Verify payment.
+- Upload photographs.
+- Preview photographs.
+- Submit evidence.
+- Run AI review.
+- Accept inspection.
+- Reject inspection.
+- Create dispute.
+- Submit dispute response.
+- Accept resolution.
+- Reject resolution.
+- View audit history.
+- Open final documents.
+- Reset demo.
+
+Every button must have a working action and appropriate success/error feedback.
+
+A button must never appear functional while doing nothing.
+
+## 61. Signature Testing
+
+Test:
+
+- Buyer Agreement 1 signature.
+- Seller Agreement 1 signature.
+- Buyer Agreement 2 signature.
+- Seller Agreement 2 signature.
+- Actual signature image persistence.
+- Signature watermark.
+- Signature rendering in PDF.
+- Signature-to-agreement version binding.
+- Unauthorized signature access.
+- Re-signing after a material agreement change.
+
+## 62. Evidence Testing
+
+Test:
+
+- Actual file upload.
+- Actual image preview.
+- Backend storage.
+- Database reference.
+- SHA-256 generation.
+- SHA-256 verification.
+- Image retrieval after logout.
+- Image retrieval after redeployment.
+- Buyer/seller permissions.
+- Image embedding in the Phase 4 audit PDF.
+
+## 63. Invitation Testing
+
+Test:
+
+- Invitation creation.
+- Invitation email.
+- Received invitation display.
+- Accept Invitation click.
+- Backend acceptance.
+- Sender status update.
+- Recipient status update.
+- Trade workspace creation.
+- Duplicate acceptance prevention.
+- Decline flow.
+
+## 64. PayPal Testing
+
+Test:
+
+- Sandbox credential availability.
+- Order creation.
+- Correct agreement amount.
+- Correct currency.
+- Buyer redirect.
+- Buyer approval.
+- Return URL.
+- Capture or authorization, according to the implemented flow.
+- Webhook verification.
+- Duplicate webhook prevention.
+- Payment history.
+- Failure handling.
+- Authorization expiry handling, if authorization is used.
+
+Use actual Sandbox accounts and responses.
+
+Do not mark a test as successful based only on a screenshot or frontend animation.
+
+## 65. Persistence Testing
+
+Test the entire application after:
+
+- Logging out.
+- Logging back in.
+- Refreshing the page.
+- Opening another browser session.
+- Restarting the application.
+- Redeploying the application.
+
+Verify that all relevant records and files remain available.
+
+## 66. End-to-End Regression Testing
+
+Run the complete buyer-to-seller demo from the first login to the Phase 5 handoff.
+
+Also test incomplete and failed scenarios.
+
+Ensure that repairing one feature does not break another.
+
+Test buyer and seller independently.
+
+Test administrator permissions separately.
+
+---
+
+# PART 17 — FINAL DELIVERY REQUIREMENTS
+
+## 67. Before Declaring the Application Fixed
+
+Provide an implementation summary to the project owner containing:
+
+1. Actual bugs discovered.
+2. Root cause of each bug.
+3. Files or modules changed.
+4. Backend routes repaired.
+5. Database changes.
+6. API integrations repaired.
+7. Signature implementation status.
+8. Agreement 1 PDF status.
+9. Agreement 2 PDF status.
+10. Invitation acceptance status.
+11. PayPal Sandbox status.
+12. Evidence upload and retrieval status.
+13. AI verification status.
+14. Dispute workflow status.
+15. Demo reset status.
+16. Persistence test results.
+17. Remaining limitations.
+18. Configuration or Secrets still required.
+
+Classify each feature honestly:
+
+- IMPLEMENTED AND TESTED.
+- IMPLEMENTED BUT NOT TESTED.
+- PARTIALLY IMPLEMENTED.
+- BLOCKED BY MISSING CONFIGURATION.
+- NOT IMPLEMENTED.
+- FAILED TEST.
+
+Do not report an API as connected unless an actual successful test confirms it.
+
+Do not report the complete application as working if any critical end-to-end step remains broken.
+
+## 68. Final Acceptance Conditions
+
+The repair is successful only when:
+
+- Both demo accounts can log in.
+- Both companies can complete Agreement 1 signing.
+- Both receive their signed Agreement 1 PDFs.
+- Invitations can actually be accepted.
+- Both companies enter the same trade workspace.
+- Both can submit and negotiate clauses.
+- Agreement 2 is generated correctly.
+- Both parties can draw their own signatures.
+- Both signatures appear in the Agreement 2 PDF.
+- The same final PDF is available to both parties.
+- PayPal Sandbox checkout works through the real test redirect.
+- Payment status is verified using actual provider responses.
+- Shipment information can be submitted.
+- Telemetry works in the demo.
+- Actual photographs can be uploaded and retrieved.
+- Both parties can view the evidence.
+- AI evidence analysis produces properly labelled findings.
+- Buyer inspection works.
+- Disputes can be created and handled.
+- Both parties can submit dispute responses.
+- Resolution decisions are recorded.
+- Actual payment and settlement statuses are not fabricated.
+- The Phase 5 handoff is complete.
+- The demo can be safely reset and repeated.
+- All important records persist across redeployment.
+
+---
+
+# FINAL NON-NEGOTIABLE INSTRUCTION
+
+Do not treat this as a simple UI enhancement.
+
+This is a full application debugging and integration task.
+
+First inspect the actual existing application, then identify root causes, repair the backend and frontend, connect all workflows, preserve the established Meridian design and run complete end-to-end tests.
+
+Do not rebuild working phases.
+
+Do not remove existing functionality.
+
+Do not replace actual integrations with fake buttons or static demonstrations.
+
+Do not insert fabricated signatures, photographs, payment confirmations, company verification results or dispute decisions.
+
+The demo must use real interactive signing, real file uploads, real PDF generation, actual PayPal Sandbox checkout and persistent backend records, with synthetic demo companies and clearly labelled simulated shipment/telemetry data.
+
+Keep the Phase 5 handoff intact.
+
+**THE FINAL GOAL: A JUDGE SHOULD BE ABLE TO LOG IN AS THE DEMO BUYER AND DEMO SELLER, COMPLETE THE ENTIRE MERIDIAN WORKFLOW, SIGN BOTH AGREEMENTS, ACCEPT AN INVITATION, COMPLETE THE PAYPAL SANDBOX PAYMENT, SUBMIT SHIPMENT EVIDENCE, REVIEW AND RESOLVE A DISPUTE, VERIFY THE PAYMENT AND TRADE RECORDS, AND REACH THE PHASE 5 HANDOFF — WITHOUT MANUAL CODE CHANGES OR DATABASE EDITING BETWEEN STEPS.**
+
+Prioritise functional correctness, data persistence, security, clear user experience and accurate status reporting over adding more features.
